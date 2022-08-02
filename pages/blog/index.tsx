@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { getAllPosts } from "pages/api/_getAllPosts";
 import { Post, PostMeta } from "pages/api/_types";
 
 export default function Blog({ posts }: { posts: PostMeta[] }) {
@@ -17,8 +18,7 @@ export default function Blog({ posts }: { posts: PostMeta[] }) {
 }
 
 export async function getStaticProps() {
-	const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/getAllPosts`);
-	let { posts } = await data.json();
-	posts = posts.slice(0, 9).map((post: Post) => post.meta);
+	const data = getAllPosts();
+	const posts = data.slice(0, 9).map((post: Post) => post.meta);
 	return { props: { posts } };
 }

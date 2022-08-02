@@ -4,7 +4,7 @@ import { PostMeta } from "pages/api/_types";
 import Image from "next/image";
 import YouTube from "@/components/Blog/Youtube";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { getPostFromSlug, getSlugs } from "pages/api/getAllPosts";
+import { getPostFromSlug, getSlugs } from "pages/api/_getAllPosts";
 import { serialize } from "next-mdx-remote/serialize";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";

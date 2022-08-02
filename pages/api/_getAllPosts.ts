@@ -38,7 +38,7 @@ export const getPostFromSlug = (slug: string): Post => {
 	};
 };
 
-const getAllPosts = () => {
+export const getAllPosts = () => {
 	const posts = getSlugs()
 		.map((slug) => getPostFromSlug(slug))
 		.sort((a, b) => {
@@ -49,14 +49,3 @@ const getAllPosts = () => {
 		.reverse();
 	return posts;
 };
-
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
-	// console.log(req.method);
-	try {
-		const posts = getAllPosts();
-		res.json({ posts });
-	} catch (err) {
-		console.log(err);
-		res.json({ status: 200 });
-	}
-}
