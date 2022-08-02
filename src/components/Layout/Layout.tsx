@@ -6,6 +6,7 @@ import { useTheme } from "next-themes";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
 	const { theme } = useTheme();
+
 	return (
 		<>
 			{theme === "light" ? (

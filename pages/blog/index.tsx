@@ -1,3 +1,4 @@
+import Seo from "@/components/Seo";
 import Link from "next/link";
 import { getAllPosts } from "pages/api/_getAllPosts";
 import { Post, PostMeta } from "pages/api/_types";
@@ -5,6 +6,7 @@ import { Post, PostMeta } from "pages/api/_types";
 export default function Blog({ posts }: { posts: PostMeta[] }) {
 	return (
 		<>
+			<Seo title="Blog" description="Things I learned in my journey of developing web applications" />
 			<h1>Posts</h1>
 			<ul className="flex flex-col gap-4">
 				{posts?.map((post) => (
