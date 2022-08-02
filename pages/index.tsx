@@ -13,6 +13,10 @@ const Home: NextPage = () => {
 					Aspiring frontend developer. Mainly working with React, Next, and Tailwind CSS.
 				</p>
 			</div>
+
+			<div className="max-w-md mt-12">
+				<h1>Latest Projects</h1>
+			</div>
 		</>
 	);
 };

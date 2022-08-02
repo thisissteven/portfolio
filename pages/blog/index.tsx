@@ -5,7 +5,7 @@ import { Post, PostMeta } from "pages/api/_types";
 export default function Blog({ posts }: { posts: PostMeta[] }) {
 	return (
 		<>
-			<h1>Articles</h1>
+			<h1>Posts</h1>
 			<ul className="flex flex-col gap-4">
 				{posts?.map((post) => (
 					<Link key={post.slug} href={`/blog/${post.slug}`}>
