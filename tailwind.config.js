@@ -7,9 +7,9 @@ module.exports = {
 				primary: ["Lato", "sans-serif"],
 			},
 			colors: {
-				primary: "var(--color-primary)",
-				bg: "var(--color-bg)",
-				"bg-secondary": "var(--color-bg-secondary)",
+				primary: "rgb(var(--color-primary) / <alpha-value>)",
+				bg: "rgb(var(--color-bg) / <alpha-value>)",
+				"bg-secondary": "rgb(var(--color-bg-secondary) / <alpha-value>)",
 			},
 		},
 	},

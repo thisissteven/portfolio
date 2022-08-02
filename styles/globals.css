@@ -6,16 +6,16 @@
 :root {
 	/* #region  /**=========== Primary Color =========== */
 	/* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
-	--color-primary: #191919;
-	--color-bg: #f0f0f0;
-	--color-bg-secondary: #252525;
+	--color-primary: 25 25 25;
+	--color-bg: 240 240 240;
+	--color-bg-secondary: 37 37 37;
 	/* #endregion  /**======== Primary Color =========== */
 }
 
 [data-theme="dark"] {
-	--color-primary: #e7f6f2;
-	--color-bg: #191919;
-	--color-bg-secondary: #282c34;
+	--color-primary: 231 246 242;
+	--color-bg: 25 25 25;
+	--color-bg-secondary: 40 44 52;
 }
 
 @layer base {
