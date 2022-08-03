@@ -37,9 +37,24 @@ export default function Header() {
 
 	const { theme, setTheme } = useTheme();
 
+	const [onTop, setOnTop] = React.useState(true);
+
+	const handleScroll = () => {
+		if (onTop !== (window.pageYOffset === 0)) {
+			setOnTop(window.pageYOffset === 0);
+		}
+	};
+
+	React.useEffect(() => {
+		window.addEventListener("scroll", handleScroll);
+		return () => {
+			window.removeEventListener("scroll", handleScroll);
+		};
+	});
+
 	return (
-		<header className="layout pt-8">
-			<nav className="flex gap-0 sm:gap-2 items-center">
+		<header className={`w-full py-6 bg-bg ${onTop ? "" : "shadow-xl"} sticky top-0 z-10 transition-shadow`}>
+			<nav className="layout flex gap-0 sm:gap-2 items-center">
 				{links.map(({ name, href }) => (
 					<Link key={name} href={href}>
 						<a className="mr-6 sm:mr-8 flex flex-col relative p">

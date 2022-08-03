@@ -17,7 +17,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
 
 			<section className="page">
 				<Header />
-				<div className="layout flex-1 py-12">{children}</div>
+				<div className="layout flex-1 pb-12 pt-8">{children}</div>
 				<Footer />
 			</section>
 		</>

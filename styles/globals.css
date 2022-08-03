@@ -150,7 +150,7 @@ Not supports in Firefox and IE */
 
 	[data-theme="light"] .scrollbar::-webkit-scrollbar-thumb {
 		border-radius: 16px;
-		border: 5px solid var(--color-bg-secondary);
+		border: 5px solid rgb(var(--color-bg-secondary));
 		background-color: #808080;
 	}
 
