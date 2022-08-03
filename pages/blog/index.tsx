@@ -21,6 +21,38 @@ export default function Blog({ posts }: { posts: PostMeta[] }) {
 						</a>
 					</Link>
 				))}
+				{posts?.map((post) => (
+					<Link key={post.slug} href={`/blog/${post.slug}`}>
+						<a className="max-w-2xl hover:bg-primary/10 rounded-md p-4">
+							<h2 className="text-md font-semibold h3 mb-2">{post.title}</h2>
+							<p className="p opacity-60">{post.excerpt}</p>
+						</a>
+					</Link>
+				))}
+				{posts?.map((post) => (
+					<Link key={post.slug} href={`/blog/${post.slug}`}>
+						<a className="max-w-2xl hover:bg-primary/10 rounded-md p-4">
+							<h2 className="text-md font-semibold h3 mb-2">{post.title}</h2>
+							<p className="p opacity-60">{post.excerpt}</p>
+						</a>
+					</Link>
+				))}
+				{posts?.map((post) => (
+					<Link key={post.slug} href={`/blog/${post.slug}`}>
+						<a className="max-w-2xl hover:bg-primary/10 rounded-md p-4">
+							<h2 className="text-md font-semibold h3 mb-2">{post.title}</h2>
+							<p className="p opacity-60">{post.excerpt}</p>
+						</a>
+					</Link>
+				))}
+				{posts?.map((post) => (
+					<Link key={post.slug} href={`/blog/${post.slug}`}>
+						<a className="max-w-2xl hover:bg-primary/10 rounded-md p-4">
+							<h2 className="text-md font-semibold h3 mb-2">{post.title}</h2>
+							<p className="p opacity-60">{post.excerpt}</p>
+						</a>
+					</Link>
+				))}
 			</ul>
 		</div>
 	);

@@ -61,7 +61,7 @@ export default function Header() {
 			<nav className="layout flex justify-between items-center">
 				<ul className="flex gap-0 sm:gap-2 items-center">
 					{links.map(({ name, href }) => (
-						<Link key={name} href={href}>
+						<Link key={name} href={href} scroll={false}>
 							<a className="mr-6 sm:mr-8 flex flex-col relative p">
 								{name}
 								{isActiveLink(href, pathname) && (
