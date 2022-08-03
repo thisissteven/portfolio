@@ -9,4 +9,5 @@ export type PostMeta = {
 	title: string;
 	tags: string[];
 	date: string;
+	readingTime: string;
 };

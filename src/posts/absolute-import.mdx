@@ -13,11 +13,15 @@ excerpt: Absolute Import is a great way to clean up your imports (works with Cre
 
 This is the usual way of importing with `..` operator to go back 1 folder:
 
+<Copy />
+
 ```jsx
 import Nav from "../../components/Nav";
 ```
 
 And this is the clean import using absolute import:
+
+<Copy />
 
 ```jsx
 import Nav from "@/components/Nav";
@@ -26,6 +30,8 @@ import Nav from "@/components/Nav";
 # For Next.js
 
 ## Add this to root with the filename of `jsconfig.json`
+
+<Copy />
 
 ```json
 {
@@ -49,6 +55,8 @@ Or you can just use
 
 ## Add this to root with the filename of `jsconfig.json`
 
+<Copy />
+
 ```json
 {
 	"compilerOptions": {
@@ -67,6 +75,8 @@ Or you can just use
 ```
 
 ## And in craco.config.js
+
+<Copy />
 
 ```js
 const path = require("path");

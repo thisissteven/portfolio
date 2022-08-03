@@ -1,11 +1,9 @@
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-import type { NextApiRequest, NextApiResponse } from "next";
-
 import path from "path";
 import fs from "fs";
-import { sync } from "glob";
 import matter from "gray-matter";
 import { Post } from "./_types";
+import readingTime from "reading-time";
+import dayjs from "dayjs";
 
 const POSTS_PATH = path.join(process.cwd(), "/src/posts");
 
@@ -21,6 +19,10 @@ export const getSlugs = (): string[] => {
 	}, []);
 };
 
+const convertDate = (date: any) => {
+	return dayjs(date).format("MMMM D, YYYY");
+};
+
 export const getPostFromSlug = (slug: string): Post => {
 	const postPath = path.join(POSTS_PATH, `${slug}.mdx`);
 	const source = fs.readFileSync(postPath);
@@ -33,7 +35,8 @@ export const getPostFromSlug = (slug: string): Post => {
 			excerpt: data?.excerpt ?? "",
 			title: data?.title ?? slug,
 			tags: (data?.tags ?? []).sort(),
-			date: (data?.date ?? new Date()).toString(),
+			date: convertDate(data?.date ?? new Date()),
+			readingTime: readingTime(source as unknown as string).text,
 		},
 	};
 };

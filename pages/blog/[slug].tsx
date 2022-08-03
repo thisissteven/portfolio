@@ -3,12 +3,14 @@ import Head from "next/head";
 import { PostMeta } from "pages/api/_types";
 import Image from "next/image";
 import YouTube from "@/components/Blog/Youtube";
+import Copy from "@/components/Blog/Copy";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getPostFromSlug, getSlugs } from "pages/api/_getAllPosts";
 import { serialize } from "next-mdx-remote/serialize";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
+import { MdAccessTime } from "react-icons/md";
 import "highlight.js/styles/atom-one-dark.css";
 
 interface MDXPost {
@@ -22,9 +24,18 @@ export default function BlogPage({ post }: { post: MDXPost }) {
 			<Head>
 				<title>{post.meta.title}</title>
 			</Head>
-			<h1 className="mb-8">{post.meta.title}</h1>
+			<h1>{post.meta.title}</h1>
 			<div className="prose lg:prose-lg">
-				<MDXRemote {...post.source} components={{ YouTube, Image }} />
+				<div className="flex justify-between text-primary items-end text-sm">
+					<p className="flex flex-col">
+						<span className="text-xs">Last updated:</span> <span className="font-semibold">{post.meta.date}</span>
+					</p>
+					<p className="flex items-center font-semibold">
+						<MdAccessTime className="mr-1" />
+						{post.meta.readingTime}
+					</p>
+				</div>
+				<MDXRemote {...post.source} components={{ YouTube, Image, Copy }} />
 			</div>
 		</>
 	);
