@@ -58,14 +58,14 @@ export default function Header() {
 				{theme === "light" ? (
 					<button
 						onClick={() => setTheme("dark")}
-						className="hover:ring-2 transition-all duration-200 ring-primary/80 bg-primary/10 p-2 rounded-md"
+						className="hover:ring-2 transition-all duration-200 ring-primary/80 bg-primary/10 p-2.5 rounded-md"
 					>
 						<MdDarkMode className="text-primary" />
 					</button>
 				) : (
 					<button
 						onClick={() => setTheme("light")}
-						className="hover:ring-2 transition-all duration-200 ring-primary/80 bg-primary/10 p-2 rounded-md"
+						className="hover:ring-2 transition-all duration-200 ring-primary/80 bg-primary/10 p-2.5 rounded-md"
 					>
 						<MdLightMode className="text-primary" />
 					</button>

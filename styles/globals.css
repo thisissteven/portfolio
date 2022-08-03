@@ -144,7 +144,7 @@ Not supports in Firefox and IE */
 	/* scrollbar itself */
 	.scrollbar::-webkit-scrollbar-thumb {
 		border-radius: 16px;
-		border: 5px solid var(--color-bg);
+		border: 5px solid rgb(var(--color-bg));
 		background-color: #808080;
 	}
 
