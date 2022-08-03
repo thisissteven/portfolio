@@ -34,6 +34,7 @@ const Home = ({ repos }: { repos: RepoProps[] }) => {
 				>
 					{(blur || src) && (
 						<Image
+							priority
 							src={src}
 							alt="profile image"
 							width="100%"
