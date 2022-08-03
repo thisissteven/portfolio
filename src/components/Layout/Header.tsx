@@ -24,14 +24,6 @@ const links: { name: string; href: string }[] = [
 	},
 ];
 
-export const isActiveLink = (href: string, currentPathname: string): boolean => {
-	if (href === "/") {
-		return href === currentPathname;
-	}
-
-	return currentPathname.startsWith(href);
-};
-
 export default function Header() {
 	const { pathname } = useRouter();
 
@@ -53,20 +45,17 @@ export default function Header() {
 	});
 
 	return (
-		<header
-			className={`w-full py-6 bg-bg ${
-				onTop ? "" : "shadow-xl"
-			} sticky top-0 z-10 transition-shadow flex justify-between`}
-		>
+		<header className={`w-full py-6 bg-bg ${onTop ? "" : "shadow-xl"} sticky top-0 z-10 transition-shadow`}>
 			<nav className="layout flex justify-between items-center">
 				<ul className="flex gap-0 sm:gap-2 items-center">
 					{links.map(({ name, href }) => (
-						<Link key={name} href={href} scroll={false}>
-							<a className="mr-6 sm:mr-8 flex flex-col relative p">
+						<Link key={name} href={href}>
+							<a
+								className={`font-semibold py-1 px-2 text-primary/50 transition-colors duration-300 hover:bg-primary/10 rounded-md ${
+									pathname === href && "text-primary/100"
+								}`}
+							>
 								{name}
-								{isActiveLink(href, pathname) && (
-									<motion.div layoutId="navigation-underline" className="w-full border-b-2 h-2 border-primary/80" />
-								)}
 							</a>
 						</Link>
 					))}

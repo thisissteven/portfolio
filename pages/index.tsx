@@ -4,6 +4,9 @@ import { getRepos } from "./api/_getRepos";
 import { AiOutlineStar, AiOutlineFork } from "react-icons/ai";
 import * as React from "react";
 import { useLoaded } from "@/hooks/useLoaded";
+import useCloudinaryImage from "@/hooks/useCloudinaryImage";
+import Image from "next/image";
+import { IoMdOpen, IoLogoGithub } from "react-icons/io";
 
 type RepoProps = {
 	repo: string;
@@ -18,22 +21,67 @@ type RepoProps = {
 const Home = ({ repos }: { repos: RepoProps[] }) => {
 	const isLoaded = useLoaded();
 
+	const publicId = "uploads/square-profile_x5muvu";
+	const [src, blur] = useCloudinaryImage(publicId);
+
 	return (
 		<div className={`${isLoaded && "fade-in-start"}`}>
 			<Seo />
-			<div className="max-w-md">
-				<h1 className="h0 mb-2" data-fade="1">
-					Steven
-				</h1>
-				<p className="p" data-fade="2">
-					Information Systems Undergraduate at <b>Universitas Indonesia</b>
-				</p>
-				<p className="p mt-4 opacity-60" data-fade="3">
-					Aspiring frontend developer. Mainly working with React, Next, and Tailwind CSS.
-				</p>
+			<div className="flex flex-wrap items-end sm:justify-center w-full pb-4 gap-4">
+				<div
+					className="oveflow-hidden h-32 w-32 sm:h-48 sm:w-48 border-primary border-2 relative rounded-full mr-8"
+					data-fade="2"
+				>
+					{(blur || src) && (
+						<Image
+							src={src}
+							alt="profile image"
+							width="100%"
+							height="100%"
+							layout="responsive"
+							objectFit="cover"
+							className="rounded-full"
+							style={{
+								filter: blur ? "blur(20px)" : "none",
+								transition: blur ? "none" : "filter 0.3s ease-out",
+							}}
+						/>
+					)}
+				</div>
+				<div className="max-w-md">
+					<h1 className="h0 mb-2" data-fade="1">
+						Steven
+					</h1>
+					<p className="p" data-fade="2">
+						Information Systems Undergraduate at <b>Universitas Indonesia</b>
+					</p>
+					<p className="p mt-4 opacity-60" data-fade="3">
+						Aspiring frontend developer. Mainly working with React, Next, and Tailwind CSS.
+					</p>
+					<div className="flex space-x-2 mt-3" data-fade="4">
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://github.com/steven2801"
+							className="flex items-center space-x-2 px-2 py-1 hover:bg-primary/10 transition-colors duration-300 rounded-md"
+						>
+							<span>Github</span>
+							<IoLogoGithub className="text-xl" />
+						</a>
+						<a
+							target="_blank"
+							rel="noopener noreferrer"
+							href="https://github.com/steven2801"
+							className="flex items-center space-x-2 px-2 py-1 hover:bg-primary/10 transition-colors duration-300 rounded-md"
+						>
+							<span>Resume</span>
+							<IoMdOpen className="text-xl" />
+						</a>
+					</div>
+				</div>
 			</div>
 
-			<div className="mt-12">
+			<div className="mt-8 sm:mt-12">
 				<h1 className="mb-4" data-fade="4">
 					Pinned Repositories
 				</h1>

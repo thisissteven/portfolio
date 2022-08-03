@@ -7,6 +7,13 @@ import { useTheme } from "next-themes";
 export default function Layout({ children }: { children: React.ReactNode }) {
 	const { theme } = useTheme();
 
+	const [mounted, setMounted] = React.useState(false);
+
+	// When mounted on client, now we can show the UI
+	React.useEffect(() => setMounted(true), []);
+
+	if (!mounted) return null;
+
 	return (
 		<>
 			{theme === "light" ? (

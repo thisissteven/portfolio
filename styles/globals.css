@@ -72,7 +72,9 @@
 	.min-h-main {
 		@apply min-h-[calc(100vh-56px)];
 	}
+}
 
+@layer components {
 	.prose > p,
 	.prose > h1,
 	.prose > h2,

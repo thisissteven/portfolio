@@ -10,7 +10,7 @@ export default function Blog({ posts }: { posts: PostMeta[] }) {
 		<div className={`${isLoaded && "fade-in-start"}`}>
 			<Seo title="Blog" description="Things I learned in my journey of developing web applications" />
 			<h1 className="mb-4" data-fade="1">
-				Posts
+				Blog
 			</h1>
 			<ul className="flex flex-col gap-4" data-fade="2">
 				{posts?.map((post) => (
