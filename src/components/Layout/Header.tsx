@@ -31,6 +31,11 @@ export default function Header() {
 
 	const [onTop, setOnTop] = React.useState(true);
 
+	const [mounted, setMounted] = React.useState(false);
+
+	// When mounted on client, now we can show the UI
+	React.useEffect(() => setMounted(true), []);
+
 	const handleScroll = () => {
 		if (onTop !== (window.pageYOffset === 0)) {
 			setOnTop(window.pageYOffset === 0);
@@ -61,21 +66,22 @@ export default function Header() {
 					))}
 				</ul>
 
-				{theme === "light" ? (
-					<button
-						onClick={() => setTheme("dark")}
-						className="hover:ring-2 transition-all duration-200 ring-primary/80 bg-primary/10 p-2.5 rounded-md"
-					>
-						<MdDarkMode className="text-primary" />
-					</button>
-				) : (
-					<button
-						onClick={() => setTheme("light")}
-						className="hover:ring-2 transition-all duration-200 ring-primary/80 bg-primary/10 p-2.5 rounded-md"
-					>
-						<MdLightMode className="text-primary" />
-					</button>
-				)}
+				{mounted &&
+					(theme === "light" ? (
+						<button
+							onClick={() => setTheme("dark")}
+							className="hover:ring-2 transition-all duration-200 ring-primary/80 bg-primary/10 p-2.5 rounded-md"
+						>
+							<MdDarkMode className="text-primary" />
+						</button>
+					) : (
+						<button
+							onClick={() => setTheme("light")}
+							className="hover:ring-2 transition-all duration-200 ring-primary/80 bg-primary/10 p-2.5 rounded-md"
+						>
+							<MdLightMode className="text-primary" />
+						</button>
+					))}
 			</nav>
 		</header>
 	);
