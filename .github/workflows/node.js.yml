@@ -26,12 +26,19 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
-    - run: npm install
+    - run: |
+          if [ -e yarn.lock ]; then
+          yarn install --frozen-lockfile
+          elif [ -e package-lock.json ]; then
+          npm ci
+          else
+          npm i
+          fi
     - run: npm run build
     - run: npm run export
     
     - name: Deploy 🚀
-      uses: JamesIves/github-pages-deploy-action@v4
+      uses: JamesIves/github-pages-deploy-action@v4.3.3
       with:
-          branch: gh-pages
+          branch: gh-pages # The branch the action should deploy to.
           folder: out # The folder the action should deploy.
