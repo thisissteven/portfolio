@@ -56,17 +56,17 @@ const Home = ({ repos }: { repos: RepoProps[] }) => {
 					<p className="p" data-fade="2">
 						Information Systems Undergraduate at <b>Universitas Indonesia</b>
 					</p>
-					<p className="p mt-4 opacity-60" data-fade="3">
+					<p className="p mt-4 text-primary/60" data-fade="3">
 						Aspiring frontend developer. Mainly working with React, Next, and Tailwind CSS.
 					</p>
 					<div className="flex space-x-2 mt-3" data-fade="4">
 						<a
 							target="_blank"
 							rel="noopener noreferrer"
-							href="https://github.com/steven2801"
+							href="https://github.com/steven2801/portfolio"
 							className="flex items-center space-x-2 px-2 py-1 hover:bg-primary/10 transition-colors duration-300 rounded-md"
 						>
-							<span>Github</span>
+							<span>Source</span>
 							<IoLogoGithub className="text-xl" />
 						</a>
 						<a

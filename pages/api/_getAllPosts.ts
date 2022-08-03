@@ -5,7 +5,7 @@ import { Post } from "./_types";
 import readingTime from "reading-time";
 import dayjs from "dayjs";
 
-const POSTS_PATH = path.join(process.cwd(), "/src/posts");
+const POSTS_PATH = path.join(process.cwd(), "/src/contents/posts");
 
 export const getSlugs = (): string[] => {
 	const files = fs.readdirSync(POSTS_PATH);
