@@ -127,6 +127,10 @@
 		@apply hover:underline no-underline underline-offset-2 text-primary;
 	}
 
+	.prose > ul > li::marker {
+		@apply text-primary/80;
+	}
+
 	.prose > p > a,
 	.prose > ul > li > a {
 		@apply text-indigo-400 hover:text-indigo-500 transition-colors duration-200;
