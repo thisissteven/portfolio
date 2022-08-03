@@ -1,14 +1,18 @@
 import Seo from "@/components/Seo";
+import { useLoaded } from "@/hooks/useLoaded";
 import Link from "next/link";
 import { getAllPosts } from "pages/api/_getAllPosts";
 import { Post, PostMeta } from "pages/api/_types";
 
 export default function Blog({ posts }: { posts: PostMeta[] }) {
+	const isLoaded = useLoaded();
 	return (
-		<>
+		<div className={`${isLoaded && "fade-in-start"}`}>
 			<Seo title="Blog" description="Things I learned in my journey of developing web applications" />
-			<h1 className="mb-4">Posts</h1>
-			<ul className="flex flex-col gap-4">
+			<h1 className="mb-4" data-fade="1">
+				Posts
+			</h1>
+			<ul className="flex flex-col gap-4" data-fade="2">
 				{posts?.map((post) => (
 					<Link key={post.slug} href={`/blog/${post.slug}`}>
 						<a className="max-w-2xl hover:bg-primary/10 rounded-md p-4">
@@ -18,7 +22,7 @@ export default function Blog({ posts }: { posts: PostMeta[] }) {
 					</Link>
 				))}
 			</ul>
-		</>
+		</div>
 	);
 }
 

@@ -53,22 +53,24 @@ export default function Header() {
 	});
 
 	return (
-		<header className={`w-full py-6 bg-bg ${onTop ? "" : "shadow-xl"} sticky top-0 z-10 transition-shadow`}>
-			<nav className="layout flex gap-0 sm:gap-2 items-center">
-				{links.map(({ name, href }) => (
-					<Link key={name} href={href}>
-						<a className="mr-6 sm:mr-8 flex flex-col relative p">
-							{name}
-							{isActiveLink(href, pathname) && (
-								<motion.div
-									layoutId="navigation-underline"
-									className="w-full border-b-2 h-2 border-primary/80"
-									animate
-								/>
-							)}
-						</a>
-					</Link>
-				))}
+		<header
+			className={`w-full py-6 bg-bg ${
+				onTop ? "" : "shadow-xl"
+			} sticky top-0 z-10 transition-shadow flex justify-between`}
+		>
+			<nav className="layout flex justify-between items-center">
+				<ul className="flex gap-0 sm:gap-2 items-center">
+					{links.map(({ name, href }) => (
+						<Link key={name} href={href}>
+							<a className="mr-6 sm:mr-8 flex flex-col relative p">
+								{name}
+								{isActiveLink(href, pathname) && (
+									<motion.div layoutId="navigation-underline" className="w-full border-b-2 h-2 border-primary/80" />
+								)}
+							</a>
+						</Link>
+					))}
+				</ul>
 
 				{theme === "light" ? (
 					<button

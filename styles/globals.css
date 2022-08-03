@@ -172,3 +172,36 @@ Not supports in Firefox and IE */
 		display: none; /* Safari and Chrome */
 	}
 }
+
+/* #region  /**=========== Fade In =========== */
+[data-fade] {
+	@apply -translate-x-10 opacity-0 transition duration-[400ms] ease-out motion-reduce:translate-x-0 motion-reduce:opacity-100;
+}
+.fade-in-start [data-fade] {
+	@apply translate-x-0 opacity-100;
+}
+.fade-in-start [data-fade="1"] {
+	transition-delay: 100ms;
+}
+.fade-in-start [data-fade="2"] {
+	transition-delay: 200ms;
+}
+.fade-in-start [data-fade="3"] {
+	transition-delay: 300ms;
+}
+.fade-in-start [data-fade="4"] {
+	transition-delay: 400ms;
+}
+.fade-in-start [data-fade="5"] {
+	transition-delay: 500ms;
+}
+.fade-in-start [data-fade="6"] {
+	transition-delay: 600ms;
+}
+.fade-in-start [data-fade="7"] {
+	transition-delay: 700ms;
+}
+.fade-in-start [data-fade="8"] {
+	transition-delay: 800ms;
+}
+/* #endregion  /**======== Fade In =========== */
