@@ -99,12 +99,26 @@
 		@apply bg-bg-secondary;
 	}
 
+	.prose > h1,
 	.prose > h2,
 	.prose > h3,
 	.prose > h4 {
 		@apply mt-12 mb-6;
 	}
 
+	.prose > blockquote {
+		@apply bg-bg-secondary py-[1px] rounded-sm text-primary border-l-red-500;
+	}
+
+	.prose > blockquote > p {
+		@apply my-4;
+	}
+
+	[data-theme="light"] .prose > blockquote {
+		@apply bg-bg-secondary text-bg border-l-blue-500;
+	}
+
+	.prose > h1 > a,
 	.prose > h2 > a,
 	.prose > h3 > a {
 		@apply hover:underline no-underline underline-offset-2 text-primary;
