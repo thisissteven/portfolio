@@ -25,7 +25,7 @@ const Home = ({ repos }: { repos: RepoProps[] }) => {
 	const [src, blur] = useCloudinaryImage(publicId);
 
 	return (
-		<div className={`${isLoaded && "fade-in-start"}`}>
+		<div className={`${isLoaded && "fade-in-start"} lg:mt-4`}>
 			<Seo />
 			<div className="flex flex-wrap items-end sm:justify-center w-full pb-4 gap-4">
 				<div

@@ -50,7 +50,7 @@ export default function Header() {
 	});
 
 	return (
-		<header className={`w-full py-6 bg-bg ${onTop ? "" : "shadow-xl"} sticky top-0 z-10 transition-shadow`}>
+		<header className={`w-full py-4 bg-bg ${onTop ? "" : "shadow-xl"} sticky top-0 z-10 transition-shadow`}>
 			<nav className="layout flex justify-between items-center">
 				<ul className="flex gap-0 sm:gap-2 items-center">
 					{links.map(({ name, href }) => (
