@@ -28,7 +28,8 @@ export default function BlogPage({ post }: { post: MDXPost }) {
 			<div className="prose lg:prose-lg">
 				<div className="flex justify-between text-primary items-end text-sm">
 					<p className="flex flex-col">
-						<span className="text-xs">Last updated:</span> <span className="font-semibold">{post.meta.date}</span>
+						<span className="font-semibold">{post.meta.writer}</span>
+						<span className="text-xs">{post.meta.date}</span>
 					</p>
 					<p className="flex items-center font-semibold">
 						<MdAccessTime className="mr-1" />
