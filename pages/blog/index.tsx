@@ -8,11 +8,17 @@ export default function Blog({ posts }: { posts: PostMeta[] }) {
 	const isLoaded = useLoaded();
 	return (
 		<div className={`${isLoaded && "fade-in-start"}`}>
-			<Seo title="Blog" description="Things I learned in my journey of developing web applications" />
-			<h1 className="mb-4" data-fade="1">
-				Blog
+			<Seo
+				title="Blog"
+				description="Collection of blog posts that I read from time to time, some written by other devs."
+			/>
+			<h1 className="mb-2" data-fade="1">
+				Blog 📪
 			</h1>
-			<ul className="flex flex-col gap-4" data-fade="2">
+			<p className="mb-4" data-fade="2">
+				Collection of blog posts that I read from time to time, some written by other devs.
+			</p>
+			<ul className="flex flex-col gap-4" data-fade="3">
 				{posts?.map((post) => (
 					<Link key={post.slug} href={`/blog/${post.slug}`}>
 						<a className="max-w-2xl hover:bg-primary/10 rounded-md p-4">
@@ -31,7 +37,7 @@ export default function Blog({ posts }: { posts: PostMeta[] }) {
 }
 
 export async function getStaticProps() {
-	const data = getAllPosts();
+	const data = getAllPosts("blog");
 	const posts = data.slice(0, 9).map((post: Post) => post.meta);
 	return { props: { posts } };
 }

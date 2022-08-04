@@ -18,7 +18,7 @@ interface MDXPost {
 	meta: PostMeta;
 }
 
-export default function BlogPage({ post }: { post: MDXPost }) {
+export default function SnippetsPage({ post }: { post: MDXPost }) {
 	return (
 		<>
 			<Head>
@@ -57,7 +57,7 @@ export default function BlogPage({ post }: { post: MDXPost }) {
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
 	const { slug } = params as { slug: string };
-	const { content, meta } = getPostFromSlug(slug, "blog");
+	const { content, meta } = getPostFromSlug(slug, "snippets");
 	const mdxSource = await serialize(content, {
 		mdxOptions: {
 			rehypePlugins: [rehypeSlug, [rehypeAutolinkHeadings, { behavior: "wrap" }], rehypeHighlight],
@@ -68,7 +68,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-	const paths = getSlugs("blog").map((slug) => ({ params: { slug } }));
+	const paths = getSlugs("snippets").map((slug) => ({ params: { slug } }));
 
 	return {
 		paths,

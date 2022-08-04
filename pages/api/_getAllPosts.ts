@@ -5,9 +5,8 @@ import { Post } from "./_types";
 import readingTime from "reading-time";
 import dayjs from "dayjs";
 
-const POSTS_PATH = path.join(process.cwd(), "/src/contents/posts");
-
-export const getSlugs = (): string[] => {
+export const getSlugs = (type: "blog" | "projects" | "snippets"): string[] => {
+	const POSTS_PATH = path.join(process.cwd(), `/src/contents/${type}`);
 	const files = fs.readdirSync(POSTS_PATH);
 
 	return files.reduce((slugs: string[], file) => {
@@ -23,7 +22,8 @@ const convertDate = (date: any) => {
 	return dayjs(date).format("MMMM D, YYYY");
 };
 
-export const getPostFromSlug = (slug: string): Post => {
+export const getPostFromSlug = (slug: string, type: "blog" | "projects" | "snippets"): Post => {
+	const POSTS_PATH = path.join(process.cwd(), `/src/contents/${type}`);
 	const postPath = path.join(POSTS_PATH, `${slug}.mdx`);
 	const source = fs.readFileSync(postPath);
 	const { content, data } = matter(source);
@@ -43,9 +43,9 @@ export const getPostFromSlug = (slug: string): Post => {
 	};
 };
 
-export const getAllPosts = () => {
-	const posts = getSlugs()
-		.map((slug) => getPostFromSlug(slug))
+export const getAllPosts = (type: "blog" | "projects" | "snippets") => {
+	const posts = getSlugs(type)
+		.map((slug) => getPostFromSlug(slug, type))
 		.sort((a, b) => {
 			if (a.meta.date > b.meta.date) return 1;
 			if (a.meta.date < b.meta.date) return -1;
