@@ -50,8 +50,12 @@ const Home = ({ repos }: { repos: RepoProps[] }) => {
 					)}
 				</div>
 				<div className="max-w-md">
-					<h1 className="h0 mb-2" data-fade="1">
-						Steven
+					<h1 className="h0 mb-2 flex items-center gap-2 md:gap-4" data-fade="1">
+						Steven{" "}
+						<div className="overflow-hidden rounded-sm sm:-mb-[5px] -mb-[2px]">
+							<span className="h-2.5 w-6 md:h-4 md:w-10 bg-red-600 block"></span>
+							<span className="h-2.5 w-6 md:h-4 md:w-10 bg-white block"></span>
+						</div>
 					</h1>
 					<p className="p" data-fade="2">
 						Information Systems Undergraduate at <b>Universitas Indonesia</b>
