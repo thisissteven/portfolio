@@ -1,5 +1,4 @@
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import Head from "next/head";
 import { PostMeta } from "pages/api/_types";
 import Image from "next/image";
 import YouTube from "@/components/Blog/Youtube";
@@ -12,6 +11,8 @@ import rehypeAutolinkHeadings from "rehype-autolink-headings";
 import rehypeHighlight from "rehype-highlight";
 import { MdAccessTime } from "react-icons/md";
 import "highlight.js/styles/atom-one-dark.css";
+import Seo from "@/components/Seo";
+import { useLoaded } from "@/hooks/useLoaded";
 
 interface MDXPost {
 	source: MDXRemoteSerializeResult<Record<string, unknown>>;
@@ -19,14 +20,13 @@ interface MDXPost {
 }
 
 export default function ProjectsPage({ post }: { post: MDXPost }) {
+	const isLoaded = useLoaded();
 	return (
-		<>
-			<Head>
-				<title>{post.meta.title}</title>
-			</Head>
-			<h1>{post.meta.title}</h1>
+		<div className={`${isLoaded ? "fade-in-start" : "opacity-0"}`}>
+			<Seo title={post.meta.title} description={post.meta.excerpt} />
+			<h1 data-fade="1">{post.meta.title}</h1>
 			<div className="prose lg:prose-lg">
-				<div className="flex justify-between text-primary items-end text-sm">
+				<div className="flex justify-between text-primary items-end text-sm" data-fade="2">
 					<p className="flex flex-col">
 						{post.meta.original ? (
 							<a
@@ -48,10 +48,11 @@ export default function ProjectsPage({ post }: { post: MDXPost }) {
 						{post.meta.readingTime}
 					</p>
 				</div>
-
+			</div>
+			<div className="prose lg:prose-lg" data-fade="3">
 				<MDXRemote {...post.source} components={{ YouTube, Image, Copy }} />
 			</div>
-		</>
+		</div>
 	);
 }
 

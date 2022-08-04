@@ -25,7 +25,7 @@ const Home = ({ repos }: { repos: RepoProps[] }) => {
 	const [src, blur] = useCloudinaryImage(publicId);
 
 	return (
-		<div className={`${isLoaded && "fade-in-start"} lg:mt-4`}>
+		<div className={`${isLoaded ? "fade-in-start" : "opacity-0"} lg:mt-4`}>
 			<Seo />
 			<div className="flex flex-wrap items-end sm:justify-center w-full pb-4 gap-4">
 				<div
@@ -72,7 +72,7 @@ const Home = ({ repos }: { repos: RepoProps[] }) => {
 						<a
 							target="_blank"
 							rel="noopener noreferrer"
-							href="https://github.com/steven2801"
+							href="https://drive.google.com/file/d/1yjYnZHZk1LHVjNSNATt5oWgQyWXiwlCz/view?usp=sharing"
 							className="flex items-center space-x-2 px-2 py-1 hover:bg-primary/10 transition-colors duration-300 rounded-md"
 						>
 							<span>Resume</span>

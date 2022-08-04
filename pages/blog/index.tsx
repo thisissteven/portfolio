@@ -7,7 +7,7 @@ import { Post, PostMeta } from "pages/api/_types";
 export default function Blog({ posts }: { posts: PostMeta[] }) {
 	const isLoaded = useLoaded();
 	return (
-		<div className={`${isLoaded && "fade-in-start"}`}>
+		<div className={`${isLoaded ? "fade-in-start" : "opacity-0"}`}>
 			<Seo
 				title="Blog"
 				description="Collection of blog posts that I read from time to time, some written by other devs."

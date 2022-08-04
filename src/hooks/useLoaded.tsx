@@ -4,7 +4,7 @@ export const useLoaded = () => {
 	const [isLoaded, setIsLoaded] = React.useState(false);
 
 	React.useEffect(() => {
-		setIsLoaded(true);
+		setTimeout(() => setIsLoaded(true), 200);
 	}, []);
 
 	return isLoaded;

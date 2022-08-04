@@ -7,7 +7,7 @@ import { Post, PostMeta } from "pages/api/_types";
 export default function Projects({ posts }: { posts: PostMeta[] }) {
 	const isLoaded = useLoaded();
 	return (
-		<div className={`${isLoaded && "fade-in-start"}`}>
+		<div className={`${isLoaded ? "fade-in-start" : "opacity-0"}`}>
 			<Seo title="Projects" description="Side projects I made throughout my learning process." />
 			<h1 className="mb-2" data-fade="1">
 				Projects 🏆

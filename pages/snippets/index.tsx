@@ -7,7 +7,7 @@ import { Post, PostMeta } from "pages/api/_types";
 export default function Snippets({ posts }: { posts: PostMeta[] }) {
 	const isLoaded = useLoaded();
 	return (
-		<div className={`${isLoaded && "fade-in-start"}`}>
+		<div className={`${isLoaded ? "fade-in-start" : "opacity-0"}`}>
 			<Seo
 				title="Snippets"
 				description="Collection of Code snippets that I have used in the past, some written by other devs."
