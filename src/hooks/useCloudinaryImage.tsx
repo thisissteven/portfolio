@@ -23,11 +23,12 @@ const useCloudinaryImage = (publicId: string, cloudName: string): [src: string, 
 		setSrc(lowSrc);
 
 		const img = new Image();
-		img.src = highSrc;
 
 		img.onload = () => {
-			setSrc(highSrc);
+			setTimeout(() => setSrc(highSrc), 500);
 		};
+
+		img.src = highSrc;
 	}, [lowSrc, highSrc]);
 
 	return [src, src === lowSrc];

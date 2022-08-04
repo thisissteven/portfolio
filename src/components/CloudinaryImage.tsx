@@ -15,7 +15,7 @@ const CloudinaryImage = ({ height, width, publicId, alt, cloudName = "steven2801
 
 	return (
 		<div className="max-w-full">
-			{(blur || src) && (
+			{src !== "" && (
 				<Image
 					priority
 					src={src}

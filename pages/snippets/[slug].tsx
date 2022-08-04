@@ -50,11 +50,11 @@ export default function SnippetsPage({ post }: { post: MDXPost }) {
 							{post.meta.readingTime}
 						</p>
 					</div>
-					<div className="prose lg:prose-lg" data-fade="4">
-						<MDXRemote {...post.source} components={{ YouTube, Image, Copy, CloudinaryImage }} />
-					</div>
 				</div>
 				{/* <div className="h-52 max-w-xs bg-yellow-200 w-full sticky top-[8rem]"></div> */}
+			</div>
+			<div className="prose lg:prose-lg" data-fade="4">
+				<MDXRemote {...post.source} components={{ YouTube, Image, Copy, CloudinaryImage }} />
 			</div>
 		</div>
 	);

@@ -1,9 +1,9 @@
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import Head from "next/head";
 import { PostMeta } from "pages/api/_types";
 import Image from "next/image";
 import YouTube from "@/components/Blog/Youtube";
 import Copy from "@/components/Blog/Copy";
+import CloudinaryImage from "@/components/CloudinaryImage";
 import { GetStaticPaths, GetStaticProps } from "next";
 import { getPostFromSlug, getSlugs } from "pages/api/_getAllPosts";
 import { serialize } from "next-mdx-remote/serialize";
@@ -51,7 +51,7 @@ export default function BlogPage({ post }: { post: MDXPost }) {
 				</div>
 			</div>
 			<div className="prose lg:prose-lg" data-fade="3">
-				<MDXRemote {...post.source} components={{ YouTube, Image, Copy }} />
+				<MDXRemote {...post.source} components={{ YouTube, Image, Copy, CloudinaryImage }} />
 			</div>
 		</div>
 	);

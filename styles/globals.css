@@ -136,6 +136,11 @@
 		@apply text-primary/80;
 	}
 
+	.prose > blockquote > p::before,
+	.prose > blockquote > p::after {
+		display: none;
+	}
+
 	.prose > p > a,
 	.prose > ul > li > a,
 	.link {
