@@ -22,7 +22,7 @@ const Home = ({ repos }: { repos: RepoProps[] }) => {
 	const isLoaded = useLoaded();
 
 	const publicId = "uploads/square-profile_x5muvu";
-	const [src, blur] = useCloudinaryImage(publicId);
+	const [src, blur] = useCloudinaryImage(publicId, "steven2801");
 
 	return (
 		<div className={`${isLoaded ? "fade-in-start" : "opacity-0"} lg:mt-4`}>

@@ -65,6 +65,10 @@
 		@apply mx-auto w-11/12;
 	}
 
+	.card {
+		max-width: calc(5 / 16 * 68.75rem);
+	}
+
 	.bg-dark a.custom-link {
 		@apply border-gray-200 hover:border-gray-200/0;
 	}
@@ -123,7 +127,8 @@
 
 	.prose > h1 > a,
 	.prose > h2 > a,
-	.prose > h3 > a {
+	.prose > h3 > a,
+	.prose > h4 > a {
 		@apply hover:underline no-underline underline-offset-2 text-primary;
 	}
 

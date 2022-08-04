@@ -3,6 +3,7 @@ import { useLoaded } from "@/hooks/useLoaded";
 import Link from "next/link";
 import { getAllPosts } from "pages/api/_getAllPosts";
 import { Post, PostMeta } from "pages/api/_types";
+import { tags, Tags } from "pages/snippets";
 
 export default function Projects({ posts }: { posts: PostMeta[] }) {
 	const isLoaded = useLoaded();
@@ -19,11 +20,14 @@ export default function Projects({ posts }: { posts: PostMeta[] }) {
 				{posts?.map((post) => (
 					<Link key={post.slug} href={`/projects/${post.slug}`}>
 						<a className="max-w-2xl hover:bg-primary/10 rounded-md p-4">
-							<div className="flex flex-col mb-2">
-								<span>{post.writer}</span>
-								<span className="text-xs">{post.date}</span>
-							</div>
 							<h2 className="text-md font-semibold h3 mb-2">{post.title}</h2>
+							<ul className="flex gap-3 text-lg items-center my-2">
+								{post.tags.map((tag: Tags) => (
+									<li key={tag} className="">
+										{tags[tag]}
+									</li>
+								))}
+							</ul>
 							<p className="p opacity-60">{post.excerpt}</p>
 						</a>
 					</Link>

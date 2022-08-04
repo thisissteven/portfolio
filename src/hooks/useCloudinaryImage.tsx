@@ -1,12 +1,12 @@
 import { buildImageUrl } from "cloudinary-build-url";
 import * as React from "react";
 
-const useCloudinaryImage = (publicId: string): [src: string, blur: boolean] => {
+const useCloudinaryImage = (publicId: string, cloudName: string): [src: string, blur: boolean] => {
 	const [src, setSrc] = React.useState<string>("");
 
 	const lowSrc = buildImageUrl(publicId, {
 		cloud: {
-			cloudName: "steven2801",
+			cloudName,
 		},
 		transformations: {
 			quality: 1,
@@ -15,7 +15,7 @@ const useCloudinaryImage = (publicId: string): [src: string, blur: boolean] => {
 
 	const highSrc = buildImageUrl(publicId, {
 		cloud: {
-			cloudName: "steven2801",
+			cloudName,
 		},
 	});
 
