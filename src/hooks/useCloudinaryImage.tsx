@@ -2,16 +2,17 @@ import { buildImageUrl } from "cloudinary-build-url";
 import * as React from "react";
 
 const useCloudinaryImage = (publicId: string, cloudName: string): [src: string, blur: boolean] => {
-	const [src, setSrc] = React.useState<string>("");
-
-	const lowSrc = buildImageUrl(publicId, {
-		cloud: {
-			cloudName,
-		},
-		transformations: {
-			quality: 1,
-		},
-	});
+	// initialize src to be low source image
+	const [src, setSrc] = React.useState<string>(() =>
+		buildImageUrl(publicId, {
+			cloud: {
+				cloudName,
+			},
+			transformations: {
+				quality: 1,
+			},
+		})
+	);
 
 	const highSrc = buildImageUrl(publicId, {
 		cloud: {
@@ -20,18 +21,14 @@ const useCloudinaryImage = (publicId: string, cloudName: string): [src: string, 
 	});
 
 	React.useEffect(() => {
-		setSrc(lowSrc);
-
 		const img = new Image();
 
-		img.onload = () => {
-			setTimeout(() => setSrc(highSrc), 500);
-		};
+		img.onload = () => setSrc(highSrc);
 
 		img.src = highSrc;
-	}, [lowSrc, highSrc]);
+	}, [highSrc]);
 
-	return [src, src === lowSrc];
+	return [src, src === highSrc];
 };
 
 export default useCloudinaryImage;

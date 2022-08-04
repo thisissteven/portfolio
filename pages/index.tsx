@@ -22,7 +22,7 @@ const Home = ({ repos }: { repos: RepoProps[] }) => {
 	const isLoaded = useLoaded();
 
 	const publicId = "uploads/square-profile_x5muvu";
-	const [src, blur] = useCloudinaryImage(publicId, "steven2801");
+	const [src, ready] = useCloudinaryImage(publicId, "steven2801");
 
 	return (
 		<div className={`${isLoaded ? "fade-in-start" : "opacity-0"} lg:mt-4`}>
@@ -32,7 +32,7 @@ const Home = ({ repos }: { repos: RepoProps[] }) => {
 					className="oveflow-hidden h-32 w-32 sm:h-48 sm:w-48 border-primary border-2 relative rounded-full mr-8"
 					data-fade="2"
 				>
-					{(blur || src) && (
+					{src && (
 						<Image
 							priority
 							src={src}
@@ -43,8 +43,8 @@ const Home = ({ repos }: { repos: RepoProps[] }) => {
 							objectFit="cover"
 							className="rounded-full"
 							style={{
-								filter: blur ? "blur(20px)" : "none",
-								transition: blur ? "none" : "filter 0.3s ease-out",
+								filter: !ready ? "blur(4px)" : "none",
+								transition: !ready ? "none" : "filter 0.3s ease-out",
 							}}
 						/>
 					)}
