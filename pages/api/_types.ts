@@ -11,4 +11,5 @@ export type PostMeta = {
 	date: string;
 	writer: string;
 	readingTime: string;
+	original: string | null;
 };

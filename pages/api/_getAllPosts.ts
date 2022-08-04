@@ -37,6 +37,7 @@ export const getPostFromSlug = (slug: string): Post => {
 			tags: (data?.tags ?? []).sort(),
 			date: convertDate(data?.date ?? new Date()),
 			writer: data?.writer ?? "Steven",
+			original: data?.original ?? null,
 			readingTime: readingTime(source as unknown as string).text,
 		},
 	};

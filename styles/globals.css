@@ -132,12 +132,14 @@
 	}
 
 	.prose > p > a,
-	.prose > ul > li > a {
+	.prose > ul > li > a,
+	.link {
 		@apply text-indigo-400 hover:text-indigo-500 transition-colors duration-200;
 	}
 
 	[data-theme="light"] .prose > p > a,
-	.prose > ul > li > a {
+	.prose > ul > li > a,
+	.link {
 		@apply text-indigo-500 hover:text-indigo-600;
 	}
 

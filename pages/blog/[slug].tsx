@@ -28,7 +28,19 @@ export default function BlogPage({ post }: { post: MDXPost }) {
 			<div className="prose lg:prose-lg">
 				<div className="flex justify-between text-primary items-end text-sm">
 					<p className="flex flex-col">
-						<span className="font-semibold">{post.meta.writer}</span>
+						{post.meta.original ? (
+							<a
+								target="_blank"
+								rel="noopener noreferrer"
+								className="link font-semibold no-underline"
+								href={post.meta.original}
+							>
+								{post.meta.writer}
+							</a>
+						) : (
+							<span className="font-semibold">{post.meta.writer}</span>
+						)}
+
 						<span className="text-xs">{post.meta.date}</span>
 					</p>
 					<p className="flex items-center font-semibold">
@@ -36,6 +48,7 @@ export default function BlogPage({ post }: { post: MDXPost }) {
 						{post.meta.readingTime}
 					</p>
 				</div>
+
 				<MDXRemote {...post.source} components={{ YouTube, Image, Copy }} />
 			</div>
 		</>
