@@ -13,6 +13,7 @@ import {
 	SiStrapi,
 	SiSocketdotio,
 	SiChakraui,
+	SiFirebase,
 } from "react-icons/si";
 
 export const tags = {
@@ -25,6 +26,7 @@ export const tags = {
 	socketio: <SiSocketdotio />,
 	strapi: <SiStrapi />,
 	chakraui: <SiChakraui />,
+	firebase: <SiFirebase />,
 };
 
 export type Tags = keyof typeof tags;
