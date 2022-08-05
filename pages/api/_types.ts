@@ -15,3 +15,8 @@ export type PostMeta = {
 	readingTime: string;
 	original: string | null;
 };
+
+export type PopulatedPost = {
+	likes: number | string;
+	views: number | string;
+} & PostMeta;

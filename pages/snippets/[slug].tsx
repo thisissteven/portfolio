@@ -14,10 +14,11 @@ import { MdAccessTime } from "react-icons/md";
 import "highlight.js/styles/atom-one-dark.css";
 import Seo from "@/components/Seo";
 import { useLoaded } from "@/hooks/useLoaded";
-import { usePostViews } from "@/hooks/metrics/usePostViews";
 import { useRouter } from "next/router";
 import * as React from "react";
 import { PostMetrics } from "@/components/Metrics/PostMetrics";
+import { useMetrics } from "@/hooks/metrics/useMetrics";
+import { updatePostViews } from "@/hooks/metrics/useMetrics";
 
 interface MDXPost {
 	source: MDXRemoteSerializeResult<Record<string, unknown>>;
@@ -30,6 +31,13 @@ export default function SnippetsPage({ post }: { post: MDXPost }) {
 	const router = useRouter();
 	const slug = router.asPath.split("/").slice(1).join("_");
 
+	const { metrics, isLoading } = useMetrics(slug);
+
+	React.useEffect(() => {
+		updatePostViews(slug);
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, []);
+
 	return (
 		<div className={`${isLoaded ? "fade-in-start" : "opacity-0"}`}>
 			<Seo title={post.meta.title} description={post.meta.excerpt} />
@@ -39,7 +47,7 @@ export default function SnippetsPage({ post }: { post: MDXPost }) {
 			<p data-fade="1" className="text-primary/70 max-w-[65ch] mb-2">
 				{post.meta.excerpt}
 			</p>
-			<PostMetrics slug={slug} increment />
+			<PostMetrics size="lg" likes={metrics?.likes} views={metrics?.views} isLoading={isLoading} />
 			<div className="prose lg:prose-lg">
 				<div className="flex justify-between text-primary items-end text-sm" data-fade="2">
 					<p className="flex flex-col">
