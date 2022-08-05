@@ -47,7 +47,7 @@ export default function SnippetsPage({ post }: { post: MDXPost }) {
 			<p data-fade="1" className="text-primary/70 max-w-[65ch] mb-2">
 				{post.meta.excerpt}
 			</p>
-			<PostMetrics likes={metrics?.likes} views={metrics?.views} isLoading={isLoading} />
+			<PostMetrics size="lg" likes={metrics?.likes} views={metrics?.views} isLoading={isLoading} />
 			<div className="prose lg:prose-lg">
 				<div className="flex justify-between text-primary items-end text-sm" data-fade="2">
 					<p className="flex flex-col">
