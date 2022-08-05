@@ -65,6 +65,10 @@
 		@apply mx-auto w-11/12;
 	}
 
+	.code {
+		@apply bg-primary/10 rounded-md px-2 py-0.5;
+	}
+
 	.card-wrapper {
 		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 	}
@@ -104,6 +108,17 @@
 
 	.prose > pre > code {
 		@apply rounded-[4px] bg-bg;
+	}
+
+	.prose > ul > li > code {
+		@apply text-primary bg-primary/10 rounded-md px-1 py-0.5 mr-1;
+	}
+
+	.prose > ul > li > code::before,
+	.prose > ul > li > code::after,
+	code::before,
+	code::after {
+		@apply hidden;
 	}
 
 	[data-theme="light"] .prose > pre > code {

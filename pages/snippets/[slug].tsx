@@ -19,6 +19,7 @@ import * as React from "react";
 import { PostMetrics } from "@/components/Metrics/PostMetrics";
 import { useMetrics } from "@/hooks/metrics/useMetrics";
 import { updatePostViews } from "@/hooks/metrics/useMetrics";
+import Callout from "@/components/Blog/Callout";
 
 interface MDXPost {
 	source: MDXRemoteSerializeResult<Record<string, unknown>>;
@@ -73,7 +74,7 @@ export default function SnippetsPage({ post }: { post: MDXPost }) {
 				</div>
 			</div>
 			<div className="prose lg:prose-lg" data-fade="4">
-				<MDXRemote {...post.source} components={{ YouTube, Image, Copy, CloudinaryImage }} />
+				<MDXRemote {...post.source} components={{ YouTube, Image, Copy, CloudinaryImage, Callout }} />
 			</div>
 		</div>
 	);
