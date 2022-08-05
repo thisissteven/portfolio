@@ -1,0 +1,54 @@
+---
+title: Grid Template Columns
+tags:
+  - css
+date: 2022-08-05
+writer: Steven
+excerpt: Resize your columns in a responsive way with grid template columns.
+---
+
+<YouTube id="XK0xMAjz9C4" />
+
+## Short Intro
+
+Let's say you want to recreate the layout above. In order to do that, we can use CSS's `grid-template-columns` property
+and `repeat()` function.
+
+The `repeat()` function allows you to repeat columns as many times as needed. In this below code, `repeat(3)` will
+create a 3-columns grid, with `1fr` meaning to let the columns take 100% of the available space.
+
+<Copy />
+
+```css
+.grid {
+	display: grid;
+
+	/* define the number of grid columns */
+	grid-template-columns: repeat(3, 1fr);
+}
+```
+
+## How to achieve the layout above
+
+Instead of using `repeat(3)`, we can use `repeat(auto-fit, ...)` so that it will resize according to the second
+parameter of the `repeat()` method. In the code below, `minmax(300px, 1fr)` will allow the columns to take a minimum
+width of `300px` and a maximum width of `1fr` (which is 100% of the available space).
+
+<Copy />
+
+```css
+.card-wrapper {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+```
+
+Just like that, now we only need to add the `.card-wrapper` class into our HTML element, like so:
+
+<Copy />
+
+```HTML
+<div className='card-wrapper ...'>...</div>
+```
+
+> Thank you for reading 👋

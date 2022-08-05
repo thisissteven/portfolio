@@ -65,8 +65,12 @@
 		@apply mx-auto w-11/12;
 	}
 
-	.card {
-		max-width: calc(5 / 16 * 68.75rem);
+	.card-wrapper {
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	}
+
+	.card-wrapper-mobile {
+		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
 	}
 
 	.bg-dark a.custom-link {

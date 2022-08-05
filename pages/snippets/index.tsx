@@ -14,6 +14,7 @@ import {
 	SiSocketdotio,
 	SiChakraui,
 	SiFirebase,
+	SiCss3,
 } from "react-icons/si";
 
 export const tags = {
@@ -27,6 +28,7 @@ export const tags = {
 	strapi: <SiStrapi />,
 	chakraui: <SiChakraui />,
 	firebase: <SiFirebase />,
+	css: <SiCss3 />,
 };
 
 export type Tags = keyof typeof tags;
@@ -45,10 +47,10 @@ export default function Snippets({ posts }: { posts: PostMeta[] }) {
 			<p className="mb-4" data-fade="2">
 				Collection of code snippets that I have used in the past, some written by other devs.
 			</p>
-			<ul className="flex gap-2 flex-wrap" data-fade="3">
+			<ul className="grid gap-2 card-wrapper-mobile xs:card-wrapper" data-fade="3">
 				{posts?.map((post) => (
 					<Link key={post.slug} href={`/snippets/${post.slug}`}>
-						<a className="hover:bg-primary/10 rounded-md p-4 card">
+						<a className="hover:bg-primary/10 rounded-md p-4">
 							<h2 className="font-semibold text-xl mb-2">{post.title}</h2>
 							<ul className="flex gap-2 text-lg items-center mb-2">
 								{post.tags.map((tag: Tags) => (

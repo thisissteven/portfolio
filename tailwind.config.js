@@ -11,6 +11,9 @@ module.exports = {
 				bg: "rgb(var(--color-bg) / <alpha-value>)",
 				"bg-secondary": "rgb(var(--color-bg-secondary) / <alpha-value>)",
 			},
+			screens: {
+				xs: "400px",
+			},
 		},
 	},
 	plugins: [require("@tailwindcss/typography")],

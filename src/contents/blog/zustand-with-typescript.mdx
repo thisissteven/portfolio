@@ -1,0 +1,112 @@
+---
+title: Using Zustand with Typescript
+tags:
+  - react
+  - typescript
+writer: Brian Francis
+original: https://javascript.plainenglish.io/using-zustand-and-typescript-to-make-a-to-do-list-in-react-fe4a41e76748
+date: 2021-05-28
+excerpt:
+  Today, let’s learn how easy Zustand can make it to manage global client-side state in React by making a to-do list
+  with it.
+---
+
+<CloudinaryImage publicId="uploads/zustand_jprfpj" alt="zustand" width={2000} height={1168} />
+
+When I first came across Zustand, I couldn’t believe how easy it was to use. The learning curve is incredibly thin. If
+you are familiar with how immutable state works in React, then you will feel right at home working with Zustand. So,
+without further ado, let’s make ourselves a to-do list.
+
+## Step 1: Install these packages
+
+<Copy />
+
+```bash
+yarn add zustand @material-ui/core @material-ui/icons uuid
+yarn add @types/uuid --save-dev
+```
+
+## Step 2: Creating our Todo Store
+
+### a. Initialize Todo Model
+
+First, before introducing Zustand, we will create a model for our to-do list to describe what the data structure of each
+to-do will look like. Open the Todo.ts file and put the following code into it.
+
+<Copy />
+
+```typescript
+// Todo.ts
+export interface Todo {
+	id: string;
+	description: string;
+	completed: boolean;
+}
+```
+
+### b. Create Zustand Store
+
+We will now be creating the state management logic for our to-do app. This is where Zustand comes into play.
+
+<Copy />
+
+```typescript
+//todoStore.ts
+import create from "zustand";
+import { v4 as uuidv4 } from "uuid";
+
+import { Todo } from "./model/Todo";
+
+interface TodoState {
+	todos: Todo[];
+	addTodo: (description: string) => void;
+	removeTodo: (id: string) => void;
+	toggleCompletedState: (id: string) => void;
+}
+
+export const useStore = create<TodoState>((set) => ({
+	// initial state
+	todos: [],
+	// methods for manipulating state
+	addTodo: (description: string) => {
+		set((state) => ({
+			todos: [
+				...state.todos,
+				{
+					id: uuidv4(),
+					description,
+					completed: false,
+				} as Todo,
+			],
+		}));
+	},
+	removeTodo: (id) => {
+		set((state) => ({
+			todos: state.todos.filter((todo) => todo.id !== id),
+		}));
+	},
+	toggleCompletedState: (id) => {
+		set((state) => ({
+			todos: state.todos.map((todo) => (todo.id === id ? ({ ...todo, completed: !todo.completed } as Todo) : todo)),
+		}));
+	},
+}));
+```
+
+## Using Zustand inside our React App
+
+<Copy />
+
+```js
+const { addTodo, removeTodo, toggleCompletedState, todos } = useStore();
+```
+
+That's it!
+
+## Wrapping Up
+
+Zustand is perhaps the simplest and least boiler-plately state-management solution that I have yet to use in React. It’s
+enjoyable to work with and doesn’t have a steep learning curve for those who already understand React.
+
+As always, I’m open to any comments and feedback that you might have. Feel free to share your favorite React
+state-management library. I’d love to hear.
