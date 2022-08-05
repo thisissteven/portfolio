@@ -1,0 +1,40 @@
+---
+title: Prisma Client
+tags:
+  - prisma
+  - typescript
+date: 2022-08-06
+writer: aqrln
+original: https://github.com/prisma/prisma/discussions/10037#discussioncomment-1572155
+excerpt: Initialize prisma client using typescript.
+---
+
+> Prisma is an ORM that helps app developers build faster and make fewer errors.
+
+If you get this kind of error:
+`Element implicitly has an 'any' type because type 'typeof globalThis' has no index signature.`
+
+Try using the code below:
+
+<Copy />
+
+```typescript
+// lib/prisma.mdx
+import { PrismaClient } from "@prisma/client";
+
+let prisma: PrismaClient;
+
+if (process.env.NODE_ENV === "production") {
+	prisma = new PrismaClient();
+} else {
+	let globalWithPrisma = global as typeof globalThis & {
+		prisma: PrismaClient;
+	};
+	if (!globalWithPrisma.prisma) {
+		globalWithPrisma.prisma = new PrismaClient();
+	}
+	prisma = globalWithPrisma.prisma;
+}
+
+export default prisma;
+```
