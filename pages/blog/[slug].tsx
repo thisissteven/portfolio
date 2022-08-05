@@ -25,7 +25,12 @@ export default function BlogPage({ post }: { post: MDXPost }) {
 	return (
 		<div className={`${isLoaded ? "fade-in-start" : "opacity-0"}`}>
 			<Seo title={post.meta.title} description={post.meta.excerpt} />
-			<h1 data-fade="1">{post.meta.title}</h1>
+			<h1 data-fade="0" className="max-w-[65ch] mb-1">
+				{post.meta.title}
+			</h1>
+			<p data-fade="1" className="text-primary/70 max-w-[65ch]">
+				{post.meta.excerpt}
+			</p>
 			<div className="prose lg:prose-lg">
 				<div className="flex justify-between text-primary items-end text-sm" data-fade="2">
 					<p className="flex flex-col">
