@@ -16,7 +16,7 @@ export default function Copy() {
 
 	return (
 		<div
-			className="relative -mb-14 bottom-10 lg:bottom-8 px-4 text-smtext-yellow-200 flex items-center justify-end"
+			className="relative h-0 -mb-5 bottom-[1.35rem] lg:bottom-3.5 px-4 text-yellow-200 flex items-center justify-end"
 			ref={ref}
 		>
 			<button

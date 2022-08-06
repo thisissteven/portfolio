@@ -20,8 +20,9 @@ const { data, error, isValidating, mutate } = useSWR(key, fetcher, options);
 ## Parameters
 
 - `key`: a unique key string for the request (or a function / array / null)
-  [(advanced usage)](/docs/conditional-fetching)
-- `fetcher`: (_optional_) a Promise returning function to fetch your data [(details)](/docs/data-fetching)
+  [(advanced usage)](https://swr.vercel.app/docs/conditional-fetching)
+- `fetcher`: (_optional_) a Promise returning function to fetch your data
+  [(details)](https://swr.vercel.app/docs/data-fetching)
 - `options`: (_optional_) an object of options for this SWR hook
 
 ## Return Values
@@ -29,19 +30,21 @@ const { data, error, isValidating, mutate } = useSWR(key, fetcher, options);
 - `data`: data for the given key resolved by `fetcher` (or undefined if not loaded)
 - `error`: error thrown by `fetcher` (or undefined)
 - `isValidating`: if there's a request or revalidation loading
-- `mutate(data?, shouldRevalidate?)`: function to mutate the cached data [(details)](/docs/mutation)
+- `mutate(data?, shouldRevalidate?)`: function to mutate the cached data
+  [(details)](https://swr.vercel.app/docs/mutation)
 
 ## Options
 
-- `suspense = false`: enable React Suspense mode [(details)](/docs/suspense)
+- `suspense = false`: enable React Suspense mode [(details)](https://swr.vercel.app/docs/suspense)
 - `fetcher(args)`: the fetcher function
 - `revalidateIfStale = true`: automatically revalidate even if there is stale data
-  [(details)](/docs/revalidation#disable-automatic-revalidations)
+  [(details)](https://swr.vercel.app/docs/revalidation#disable-automatic-revalidations)
 - `revalidateOnMount`: enable or disable automatic revalidation when component is mounted
-- `revalidateOnFocus = true`: automatically revalidate when window gets focused [(details)](/docs/revalidation)
+- `revalidateOnFocus = true`: automatically revalidate when window gets focused
+  [(details)](https://swr.vercel.app/docs/revalidation)
 - `revalidateOnReconnect = true`: automatically revalidate when the browser regains a network connection (via
-  `navigator.onLine`) [(details)](/docs/revalidation)
-- `refreshInterval` [(details)](/docs/revalidation):
+  `navigator.onLine`) [(details)](https://swr.vercel.app/docs/revalidation)
+- `refreshInterval` [(details)](https://swr.vercel.app/docs/revalidation):
   - Disabled by default: `refreshInterval = 0`
   - If set to a number, polling interval in milliseconds
   - If set to a function, the function will receive the latest data and should return the interval in milliseconds
@@ -53,7 +56,7 @@ const { data, error, isValidating, mutate } = useSWR(key, fetcher, options);
 - `loadingTimeout = 3000`: timeout to trigger the onLoadingSlow event in milliseconds
 - `errorRetryInterval = 5000`: error retry interval in milliseconds
 - `errorRetryCount`: max error retry count
-- `fallback`: a key-value object of multiple fallback data [(example)](/docs/with-nextjs)
+- `fallback`: a key-value object of multiple fallback data [(example)](https://swr.vercel.app/docs/with-nextjs)
 - `fallbackData`: initial data to be returned (note: This is per-hook)
 - `onLoadingSlow(key, config)`: callback function when a request takes too long to load (see `loadingTimeout`)
 - `onSuccess(data, key, config)`: callback function when a request finishes successfully
@@ -63,7 +66,7 @@ const { data, error, isValidating, mutate } = useSWR(key, fetcher, options);
   default, [stable-hash](https://github.com/shuding/stable-hash) is used.
 - `isPaused()`: function to detect whether pause revalidations, will ignore fetched data and errors when it returns
   `true`. Returns `false` by default.
-- `use`: array of middleware functions [(details)](/docs/middleware)
+- `use`: array of middleware functions [(details)](https://swr.vercel.app/docs/middleware)
 
 <Callout>
 	💡 When under a slow network (2G, {"<="} 70Kbps), <code className="code text-primary">errorRetryInterval</code> will
@@ -71,4 +74,4 @@ const { data, error, isValidating, mutate } = useSWR(key, fetcher, options);
 	<code className="code text-primary">loadingTimeout</code> will be 5s by default.
 </Callout>
 
-You can also use [global configuration](/docs/global-configuration) to provide default options.
+You can also use [global configuration](https://swr.vercel.app/docs/global-configuration) to provide default options.

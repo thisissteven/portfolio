@@ -28,7 +28,7 @@ export default function Blog({ posts }: { posts: PostMeta[] }) {
 					<Link key={post.slug} href={`/blog/${post.slug}`}>
 						<a className="max-w-2xl hover:bg-primary/10 rounded-md p-4">
 							<div className="flex justify-between items-center xs:flex-row flex-col gap-1">
-								<div className="flex flex-col mb-2">
+								<div className="flex flex-col mb-2 w-full">
 									<span>{post.writer}</span>
 									<span className="text-xs">{post.date}</span>
 								</div>
