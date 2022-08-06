@@ -49,7 +49,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 			}
 
 			case "POST": {
-				const count = z.number().min(1).max(3).parse(req.body.count);
+				const count = z.number().min(1).max(5).parse(req.body.count);
 
 				// Upsert: if a row exists, update it by incrementing likes. If it
 				// doesn't exist, create a new row with the number of likes this api

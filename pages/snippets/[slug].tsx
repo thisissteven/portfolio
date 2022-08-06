@@ -20,6 +20,7 @@ import { PostMetrics } from "@/components/Metrics/PostMetrics";
 import { useMetrics } from "@/hooks/metrics/useMetrics";
 import { updatePostViews } from "@/hooks/metrics/useMetrics";
 import Callout from "@/components/Blog/Callout";
+import Heart from "@/components/Metrics/Heart";
 
 interface MDXPost {
 	source: MDXRemoteSerializeResult<Record<string, unknown>>;
@@ -40,7 +41,7 @@ export default function SnippetsPage({ post }: { post: MDXPost }) {
 	}, []);
 
 	return (
-		<div className={`${isLoaded ? "fade-in-start" : "opacity-0"}`}>
+		<div className={`${isLoaded ? "fade-in-start" : "opacity-0"} relative`}>
 			<Seo title={post.meta.title} description={post.meta.excerpt} />
 			<h1 data-fade="0" className="max-w-[65ch] mb-1">
 				{post.meta.title}
@@ -76,6 +77,7 @@ export default function SnippetsPage({ post }: { post: MDXPost }) {
 			<div className="prose lg:prose-lg" data-fade="4">
 				<MDXRemote {...post.source} components={{ YouTube, Image, Copy, CloudinaryImage, Callout }} />
 			</div>
+			<Heart slug={slug} />
 		</div>
 	);
 }

@@ -43,8 +43,8 @@ export const usePostLikes = (slug: string, config?: SWRConfiguration) => {
 	const [batchedLikes, setBatchedLikes] = React.useState(0);
 
 	const increment = () => {
-		// Prevent the user from liking more than 3 times
-		if (!data || data.currentUserLikes >= 3) {
+		// Prevent the user from liking more than 5 times
+		if (!data || data.currentUserLikes >= 5) {
 			return;
 		}
 
