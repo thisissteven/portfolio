@@ -12,35 +12,37 @@ export default function Projects({ posts }: { posts: PostMeta[] }) {
 
 	const { populatedPosts: projects, isLoading } = usePopulatedPosts(posts, "projects");
 	return (
-		<div className={`${isLoaded ? "fade-in-start" : "opacity-0"}`}>
+		<>
 			<Seo title="Projects" description="Side projects I made throughout my learning process." />
-			<h1 className="mb-2" data-fade="1">
-				Projects 🏆
-			</h1>
-			<p className="mb-4" data-fade="2">
-				Side projects I made throughout my learning process.
-			</p>
-			<ul className="flex flex-col gap-4" data-fade="3">
-				{projects?.map((post) => (
-					<Link key={post.slug} href={`/projects/${post.slug}`}>
-						<a className="max-w-2xl hover:bg-primary/10 rounded-md p-4">
-							<h2 className="text-md font-semibold h3 mb-3">{post.title}</h2>
-							<div className="flex gap-2 justify-between items-center mb-3">
-								<ul className="flex gap-3 text-lg sm:text-xl items-center">
-									{post.tags.map((tag: Tags) => (
-										<li key={tag} className="">
-											{tags[tag]}
-										</li>
-									))}
-								</ul>
-								<PostMetrics size="lg" likes={post.likes} views={post.views} isLoading={isLoading} />
-							</div>
-							<p className="p opacity-60">{post.excerpt}</p>
-						</a>
-					</Link>
-				))}
-			</ul>
-		</div>
+			<div className={`${isLoaded ? "fade-in-start" : "opacity-0"}`}>
+				<h1 className="mb-2" data-fade="1">
+					Projects 🏆
+				</h1>
+				<p className="mb-4" data-fade="2">
+					Side projects I made throughout my learning process.
+				</p>
+				<ul className="flex flex-col gap-4" data-fade="3">
+					{projects?.map((post) => (
+						<Link key={post.slug} href={`/projects/${post.slug}`}>
+							<a className="max-w-2xl hover:bg-primary/10 rounded-md p-4">
+								<h2 className="text-md font-semibold h3 mb-3">{post.title}</h2>
+								<div className="flex gap-2 justify-between items-center mb-3">
+									<ul className="flex gap-3 text-lg sm:text-xl items-center">
+										{post.tags.map((tag: Tags) => (
+											<li key={tag} className="">
+												{tags[tag]}
+											</li>
+										))}
+									</ul>
+									<PostMetrics size="lg" likes={post.likes} views={post.views} isLoading={isLoading} />
+								</div>
+								<p className="p opacity-60">{post.excerpt}</p>
+							</a>
+						</Link>
+					))}
+				</ul>
+			</div>
+		</>
 	);
 }
 

@@ -1,19 +1,40 @@
 import { usePostLikes } from "@/hooks/metrics/usePostLikes";
 import { FaHeartbeat } from "react-icons/fa";
+import * as React from "react";
+
+const hearts: {
+	[key: number]: React.ReactNode;
+} = {
+	1: <span className="animate-ping absolute inset-0">💕</span>,
+	2: <span className="animate-ping absolute inset-0">💕💕</span>,
+	3: <span className="animate-ping absolute inset-0">💕💕💕</span>,
+	4: <span className="animate-ping absolute inset-0">💕💕💕💕</span>,
+	5: <span className="animate-ping absolute inset-0 ">💕💕💕💕💕</span>,
+};
 
 export default function Heart({ slug }: { slug: string }) {
 	const { likes, currentUserLikes, increment } = usePostLikes(slug);
 
 	const heightPercentage = Math.floor((currentUserLikes / 5) * 100);
 
+	const [pressed, setPressed] = React.useState(false);
+
+	React.useEffect(() => {
+		if (pressed) {
+			setTimeout(() => setPressed(false), 500);
+		}
+	}, [pressed]);
+
 	return (
 		<div className="mt-8 flex items-center justify-center sm:justify-start gap-2 sm:gap-4">
 			<button
-				onClick={increment}
-				className="relative hover:scale-[105%] active:scale-[115%] transition-all duration-300 flex"
+				onClick={() => {
+					increment();
+					setPressed(true);
+				}}
+				className="relative outline-none hover:scale-[105%] active:scale-[115%] transition-all duration-300 flex"
 			>
-				{/* initialize button width */}
-				{/* <FaHeartbeat className="text-transparent" /> */}
+				{pressed && hearts[likes]}
 
 				{/* actual heart being displayed */}
 				<div className="hidden sm:block">
@@ -43,7 +64,9 @@ export default function Heart({ slug }: { slug: string }) {
 					style={{ bottom: heightPercentage + "%" }}
 				></div>
 			</button>
-			<span className="text-xl sm:text-3xl font-bold">{likes}</span>
+			<span className="text-xl sm:text-3xl font-bold bg-clip-text bg-gradient-to-r from-purple-400 to-purple-600 text-transparent">
+				{likes}
+			</span>
 		</div>
 	);
 }
