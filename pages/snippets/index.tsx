@@ -58,7 +58,6 @@ export default function Snippets({ posts }: { posts: PostMeta[] }) {
 						<a className="hover:bg-primary/10 rounded-md p-4">
 							<h2 className="font-semibold text-xl mb-2">{snippet.title}</h2>
 							<div className="flex gap-2 justify-between items-center mb-2">
-								<PostMetrics size="sm" likes={snippet.likes} views={snippet.views} isLoading={isLoading} />
 								<ul className="flex gap-2 text-lg items-center">
 									{snippet.tags.map((tag: Tags) => (
 										<li key={tag} className="">
@@ -66,6 +65,7 @@ export default function Snippets({ posts }: { posts: PostMeta[] }) {
 										</li>
 									))}
 								</ul>
+								<PostMetrics size="sm" likes={snippet.likes} views={snippet.views} isLoading={isLoading} />
 							</div>
 							<p className="p text-sm opacity-60">{snippet.excerpt}</p>
 						</a>
