@@ -34,7 +34,7 @@ export default function Heart({ slug }: { slug: string }) {
 				}}
 				className="relative outline-none hover:scale-[105%] active:scale-[115%] transition-all duration-300 flex"
 			>
-				{pressed && hearts[likes]}
+				{pressed && hearts[currentUserLikes]}
 
 				{/* actual heart being displayed */}
 				<div className="hidden sm:block">
