@@ -22,6 +22,7 @@ import {
 	SiPrisma,
 } from "react-icons/si";
 import SearchFilter from "@/components/SearchFilter";
+import SortListBox from "@/components/SortListBox";
 
 export const tags = {
 	nextjs: <SiNextdotjs />,
@@ -54,6 +55,8 @@ export default function Snippets({ posts }: { posts: PostMeta[] }) {
 	const { populatedPosts: snippets, isLoading } = usePopulatedPosts(posts, "snippets");
 
 	const [filtered, setFiltered] = React.useState(() => snippets);
+	const [selected, setSelected] = React.useState(() => "Sort by name");
+
 	return (
 		<div className={`${isLoaded ? "fade-in-start" : "opacity-0"}`}>
 			<Seo
@@ -66,8 +69,9 @@ export default function Snippets({ posts }: { posts: PostMeta[] }) {
 			<p className="mb-4" data-fade="2">
 				Collection of code snippets that I have used in the past, some written by other devs.
 			</p>
-			<div className="mb-4" data-fade="2">
-				<SearchFilter setFiltered={setFiltered} populatedPosts={snippets} />
+			<div className="mb-4 relative z-10 flex flex-col" data-fade="2">
+				<SearchFilter setFiltered={setFiltered} populatedPosts={snippets} selected={selected} />
+				<SortListBox selected={selected} setSelected={setSelected} />
 			</div>
 			<div className="grid gap-2 card-wrapper-mobile xs:card-wrapper" data-fade="3">
 				{filtered?.map((snippet) => (
