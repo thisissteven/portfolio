@@ -20,6 +20,7 @@ import {
 	SiFirebase,
 	SiCss3,
 	SiPrisma,
+	SiFramer,
 } from "react-icons/si";
 import SearchFilter from "@/components/SearchFilter";
 import SortListBox from "@/components/SortListBox";
@@ -37,6 +38,7 @@ export const tags = {
 	firebase: <SiFirebase />,
 	css: <SiCss3 />,
 	prisma: <SiPrisma />,
+	"framer-motion": <SiFramer />,
 	swr: (
 		<svg height="12" viewBox="0 0 291 69" fill="none">
 			<path

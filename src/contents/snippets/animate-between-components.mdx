@@ -1,0 +1,43 @@
+---
+title: Framer Motion layoutId
+tags:
+  - framer-motion
+  - react
+date: 2022-08-07
+writer: Framer Motion
+original: https://www.framer.com/docs/animate-shared-layout/#animate-between-components
+excerpt: Animate between components using framer motion's layoutId
+---
+
+## Animate between components
+
+`AnimateSharedLayout` can be used to animate between completely different motion components that share the same
+`layoutId` prop.
+
+In this example, each item contains a `motion` component with a `layoutId="outline"` prop that gets rendered only if the
+item is selected.
+
+<Copy />
+
+```js
+isSelected && <motion.div layoutId="underline" />;
+```
+
+When a new component with a `layoutId` gets added as another gets removed, the component will perform a layout animation
+from previous component.
+
+The new component will also inherit any animating values from the old component as its `initial` state. So visually
+it'll be treated as one continuous component.
+
+Note: If the previous component remains in the tree when the new one is added, it'll automatically be hidden using
+`visibility: hidden`. If the new component is subsequently removed, the previous component will be set back to visible.
+
+<Copy />
+
+```js
+<motion.div
+  layoutId="underline"
+  initial={false}
+  animate={{ backgroundColor: "#ff0000" }}
+/>
+```
