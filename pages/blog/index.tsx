@@ -33,8 +33,6 @@ export default function Blog({ posts }: { posts: PostMeta[] }) {
 									<span className="text-xs">{post.date}</span>
 								</div>
 								<div className="w-full xs:w-auto flex gap-2 justify-between items-center mb-2 flex-row-reverse xs:flex-row">
-									<PostMetrics size="lg" likes={post.likes} views={post.views} isLoading={isLoading} />
-									<span className="text-sm hidden xs:block">•</span>
 									<ul className="flex gap-3 text-lg sm:text-xl items-center">
 										{post.tags.map((tag: Tags) => (
 											<li key={tag} className="">
@@ -42,6 +40,8 @@ export default function Blog({ posts }: { posts: PostMeta[] }) {
 											</li>
 										))}
 									</ul>
+									<span className="text-sm hidden xs:block">•</span>
+									<PostMetrics size="lg" likes={post.likes} views={post.views} isLoading={isLoading} />
 								</div>
 							</div>
 							<h2 className="font-semibold text-xl mb-1">{post.title}</h2>
