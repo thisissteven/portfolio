@@ -1,7 +1,7 @@
 import path from "path";
 import fs from "fs";
 import matter from "gray-matter";
-import { Post } from "./_types";
+import { Post } from "./types";
 import readingTime from "reading-time";
 import dayjs from "dayjs";
 

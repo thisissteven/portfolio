@@ -1,6 +1,6 @@
 import Seo from "@/components/Seo";
 import type { GetStaticProps } from "next";
-import { getRepos } from "./api/_getRepos";
+import { getRepos } from "../src/lib/getRepos";
 import { AiOutlineStar, AiOutlineFork } from "react-icons/ai";
 import * as React from "react";
 import { useLoaded } from "@/hooks/useLoaded";

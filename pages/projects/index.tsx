@@ -3,8 +3,8 @@ import Seo from "@/components/Seo";
 import { usePopulatedPosts } from "@/hooks/metrics/usePopulatedPosts";
 import { useLoaded } from "@/hooks/useLoaded";
 import Link from "next/link";
-import { getAllPosts } from "pages/api/_getAllPosts";
-import { Post, PostMeta } from "pages/api/_types";
+import { getAllPosts } from "@/lib/getAllPosts";
+import { Post, PostMeta } from "@/lib/types";
 import { tags, Tags } from "pages/snippets";
 
 export default function Projects({ posts }: { posts: PostMeta[] }) {

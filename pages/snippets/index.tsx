@@ -3,8 +3,8 @@ import Seo from "@/components/Seo";
 import { usePopulatedPosts } from "@/hooks/metrics/usePopulatedPosts";
 import { useLoaded } from "@/hooks/useLoaded";
 import Link from "next/link";
-import { getAllPosts } from "pages/api/_getAllPosts";
-import { PopulatedPost, Post, PostMeta } from "pages/api/_types";
+import { getAllPosts } from "@/lib/getAllPosts";
+import { PopulatedPost, Post, PostMeta } from "@/lib/types";
 
 import {
 	SiJavascript,
@@ -18,6 +18,7 @@ import {
 	SiChakraui,
 	SiFirebase,
 	SiCss3,
+	SiPrisma,
 } from "react-icons/si";
 
 export const tags = {
@@ -32,6 +33,7 @@ export const tags = {
 	chakraui: <SiChakraui />,
 	firebase: <SiFirebase />,
 	css: <SiCss3 />,
+	prisma: <SiPrisma />,
 };
 
 export type Tags = keyof typeof tags;

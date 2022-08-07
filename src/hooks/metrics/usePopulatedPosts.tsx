@@ -1,5 +1,5 @@
 import useSWR from "swr";
-import { PopulatedPost, PostMeta } from "pages/api/_types";
+import { PopulatedPost, PostMeta } from "@/lib/types";
 import * as React from "react";
 import { Metrics } from "pages/api/postsMetrics";
 

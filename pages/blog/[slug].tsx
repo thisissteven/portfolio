@@ -1,11 +1,11 @@
 import { MDXRemote, MDXRemoteSerializeResult } from "next-mdx-remote";
-import { PostMeta } from "pages/api/_types";
+import { PostMeta } from "@/lib/types";
 import Image from "next/image";
 import YouTube from "@/components/Blog/Youtube";
 import Copy from "@/components/Blog/Copy";
 import CloudinaryImage from "@/components/CloudinaryImage";
 import { GetStaticPaths, GetStaticProps } from "next";
-import { getPostFromSlug, getSlugs } from "pages/api/_getAllPosts";
+import { getPostFromSlug, getSlugs } from "@/lib/getAllPosts";
 import { serialize } from "next-mdx-remote/serialize";
 import rehypeSlug from "rehype-slug";
 import rehypeAutolinkHeadings from "rehype-autolink-headings";
