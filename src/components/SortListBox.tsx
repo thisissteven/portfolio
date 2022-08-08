@@ -31,11 +31,11 @@ export default function SortListBox({
 						>
 							<span className="flex items-center">
 								{selected === "Sort by name" ? (
-									<TbSortAscendingLetters className="mr-2 text-base" />
+									<TbSortAscendingLetters className="mr-2 text-sm sm:text-base" />
 								) : (
-									<FaHeartbeat className="mr-2 text-base" />
+									<FaHeartbeat className="mr-2 text-sm sm:text-base" />
 								)}
-								<span className="font-semibold  text-base">{selected}</span>
+								<span className="font-semibold  text-sm sm:text-base">{selected}</span>
 							</span>
 							<span className="pointer-events-none absolute inset-y-0 right-0 flex items-center pr-2">
 								<HiSelector className="h-5 w-5 text-primary" aria-hidden="true" />
@@ -44,7 +44,7 @@ export default function SortListBox({
 					)}
 					<Transition as={Fragment} leave="transition ease-in duration-100" leaveFrom="opacity-100" leaveTo="opacity-0">
 						<Listbox.Options
-							className={`rounded-md whitespace-nowrap absolute mt-2 max-h-60 w-full overflow-auto py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm ${
+							className={`rounded-md whitespace-nowrap absolute mt-2 max-h-60 w-full overflow-auto py-1 text-sm sm:text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none ${
 								theme === "dark" ? "bg-[#2f2f2f]" : "bg-[#e2e2e2]"
 							}`}
 						>
