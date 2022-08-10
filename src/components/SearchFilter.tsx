@@ -31,7 +31,7 @@ export default function SearchFilter({
 									typeof a.views === "number" &&
 									typeof z.views === "number"
 								) {
-									return z.likes + z.views - a.likes + a.views;
+									return z.likes + z.views - a.likes - a.views;
 								} else {
 									return 0;
 								}
