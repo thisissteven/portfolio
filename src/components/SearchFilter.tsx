@@ -25,8 +25,13 @@ export default function SearchFilter({
 					selected === "Sort by name"
 						? filtered.sort((a, z) => a.title.localeCompare(z.title))
 						: filtered.sort((a, z) => {
-								if (typeof a.likes === "number" && typeof z.likes === "number") {
-									return z.likes - a.likes;
+								if (
+									typeof a.likes === "number" &&
+									typeof z.likes === "number" &&
+									typeof a.views === "number" &&
+									typeof z.views === "number"
+								) {
+									return z.likes + z.views - a.likes + a.views;
 								} else {
 									return 0;
 								}
