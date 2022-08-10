@@ -1,0 +1,116 @@
+---
+title: Infinite Scroll
+tags:
+  - react
+  - swr
+date: 2022-08-10
+writer: Steven
+excerpt: Implement infinite scrolling using SWR's useSWRInfinite
+---
+
+## Intro
+
+[API Documentation](https://swr.vercel.app/docs/pagination#useswrinfinite)
+
+[Infinite Scrolling Demo](https://pokedex-infinite.vercel.app/)
+
+## The Hook
+
+<Copy />
+
+```jsx
+// lib/usePokemon.ts
+import { SWRConfiguration } from 'swr';
+import useSWRInfinite from 'swr/infinite';
+
+type Pokemon = {
+  name: string;
+};
+
+type PokemonData = {
+  next: string | null;
+  results: Pokemon[];
+};
+
+const API_URL = 'https://pokeapi.co/api/v2/pokemon';
+const fetcher = (url: string) => fetch(url).then((res) => res.json());
+
+const usePokemon = (pageSize = 20, config?: SWRConfiguration) => {
+  const { data, error, setSize, isValidating } = useSWRInfinite<PokemonData>(
+    (index) => `${API_URL}?offset=${index * pageSize}&limit=${pageSize}`,
+    fetcher,
+    config
+  );
+
+  const pokemons: Pokemon[] = data
+    ? data.reduce((arr: Pokemon[], pokemon) => arr.concat(pokemon.results), [])
+    : [];
+
+  const loadMore = () => setSize((size) => size + 1);
+
+  const endOfPage = data && !data[data.length - 1].next;
+
+  return { pokemons, error, loadMore, isValidating, endOfPage };
+};
+
+export default usePokemon;
+
+```
+
+## Usage
+
+<Copy />
+
+```jsx
+// index.tsx
+import * as React from 'react';
+import { useInView } from 'react-intersection-observer';
+
+import usePokemon from '@/lib/usePokemon';
+
+export default function HomePage() {
+  const { ref, inView } = useInView();
+
+  const { pokemons, isValidating, error, loadMore, endOfPage } =
+    usePokemon(100);
+
+  React.useEffect(() => {
+    if (isValidating || endOfPage) return;
+
+    // add debounce effect
+    const fetchTimeout = setTimeout(() => {
+      if (inView) loadMore();
+    }, 200);
+
+    return () => clearTimeout(fetchTimeout);
+  }, [inView, isValidating, loadMore, endOfPage]);
+
+  if (error) {
+    return <p>An error occurred.</p>;
+  }
+
+  return (
+    <main>
+      <section className='bg-white'>
+        <div className='layout min-h-screen py-20'>
+          <h1 className='text-center'>Pokemon List</h1>
+
+          <div className='mt-4 space-y-4'>
+            {pokemons.map((item, index) => {
+              return (
+                <div key={index}>
+                  <p className='bg-indigo-100 p-4'>{item.name}</p>
+                </div>
+              );
+            })}
+          </div>
+          <p className='mt-4 text-center'>
+            {endOfPage ? 'End of page' : 'Loading...'}
+          </p>
+          <div ref={ref}></div>
+        </div>
+      </section>
+    </main>
+  );
+}
+```
