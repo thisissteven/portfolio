@@ -33,7 +33,13 @@ export default function Header() {
 	const [mounted, setMounted] = React.useState(false);
 
 	// When mounted on client, now we can show the UI
-	React.useEffect(() => setMounted(true), []);
+	React.useEffect(() => {
+		if (typeof window !== undefined) {
+			const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+			setTheme(prefersDark ? "dark" : "light");
+			setMounted(true);
+		}
+	}, [setTheme]);
 
 	const handleScroll = () => {
 		if (onTop !== (window.pageYOffset === 0)) {

@@ -13,10 +13,16 @@ export default function SortListBox({
 	setSelected: React.Dispatch<SetStateAction<string>>;
 }) {
 	const [mounted, setMounted] = React.useState(false);
-	const { theme } = useTheme();
+	const { theme, setTheme } = useTheme();
 
 	// When mounted on client, now we can show the UI
-	React.useEffect(() => setMounted(true), []);
+	React.useEffect(() => {
+		if (typeof window !== undefined) {
+			const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+			setTheme(prefersDark ? "dark" : "light");
+			setMounted(true);
+		}
+	}, [setTheme]);
 
 	if (!mounted) {
 		return null;

@@ -5,12 +5,18 @@ import NextNProgress from "nextjs-progressbar";
 import { useTheme } from "next-themes";
 
 export default function Layout({ children }: { children: React.ReactNode }) {
-	const { theme } = useTheme();
+	const { theme, setTheme } = useTheme();
 
 	const [mounted, setMounted] = React.useState(false);
 
 	// When mounted on client, now we can show the UI
-	React.useEffect(() => setMounted(true), []);
+	React.useEffect(() => {
+		if (typeof window !== undefined) {
+			const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+			setTheme(prefersDark ? "dark" : "light");
+			setMounted(true);
+		}
+	}, [setTheme]);
 
 	return (
 		<>
