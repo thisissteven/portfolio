@@ -1,4 +1,4 @@
-const siteUrl = "https://steven2801.vercel.app";
+const siteUrl = "https://www.stevenn.tech";
 
 module.exports = {
 	siteUrl,
