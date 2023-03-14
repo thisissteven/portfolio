@@ -37,8 +37,8 @@ export default function Blog({ posts }: { posts: PostMeta[] }) {
                       </li>
                     ))}
                   </ul>
-                  <span className="text-sm hidden xs:block">•</span>
-                  <PostMetrics size="lg" likes={post.likes} views={post.views} isLoading={isLoading} />
+                  {/* <span className="text-sm hidden xs:block">•</span> */}
+                  {/* <PostMetrics size="lg" likes={post.likes} views={post.views} isLoading={isLoading} /> */}
                 </div>
               </div>
               <h2 className="font-semibold text-xl mb-1">{post.title}</h2>
