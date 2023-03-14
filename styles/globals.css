@@ -4,261 +4,269 @@
 @tailwind utilities;
 
 :root {
-	/* #region  /**=========== Primary Color =========== */
-	/* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
-	--color-primary: 25 25 25;
-	--color-bg: 240 240 240;
-	--color-bg-secondary: 37 37 37;
-	/* #endregion  /**======== Primary Color =========== */
+  /* #region  /**=========== Primary Color =========== */
+  /* !STARTERCONF Customize these variable, copy and paste from /styles/colors.css for list of colors */
+  --color-primary: 25 25 25;
+  --color-bg: 240 240 240;
+  --color-bg-secondary: 37 37 37;
+  /* #endregion  /**======== Primary Color =========== */
 }
 
 [data-theme="dark"] {
-	--color-primary: 231 246 242;
-	--color-bg: 25 25 25;
-	--color-bg-secondary: 40 44 52;
+  --color-primary: 231 246 242;
+  --color-bg: 25 25 25;
+  --color-bg-secondary: 40 44 52;
 }
 
 @layer base {
-	/* #region  /**=========== Typography =========== */
-	.h0 {
-		@apply font-primary text-3xl font-bold md:text-5xl text-primary;
-	}
+  /* #region  /**=========== Typography =========== */
+  .h0 {
+    @apply font-primary text-3xl font-bold md:text-5xl text-primary;
+  }
 
-	h1,
-	.h1 {
-		@apply font-primary text-2xl font-bold md:text-4xl text-primary;
-	}
+  h1,
+  .h1 {
+    @apply font-primary text-2xl font-bold md:text-4xl text-primary;
+  }
 
-	h2,
-	.h2 {
-		@apply font-primary text-xl font-bold md:text-3xl text-primary;
-	}
+  h2,
+  .h2 {
+    @apply font-primary text-xl font-bold md:text-3xl text-primary;
+  }
 
-	h3,
-	.h3 {
-		@apply font-primary text-lg font-bold md:text-2xl text-primary;
-	}
+  h3,
+  .h3 {
+    @apply font-primary text-lg font-bold md:text-2xl text-primary;
+  }
 
-	h4,
-	.h4 {
-		@apply font-primary text-base font-bold md:text-lg text-primary;
-	}
+  h4,
+  .h4 {
+    @apply font-primary text-base font-bold md:text-lg text-primary;
+  }
 
-	body,
-	.p {
-		@apply font-primary text-sm md:text-base text-primary;
-	}
+  body,
+  .p {
+    @apply font-primary text-sm md:text-base text-primary;
+  }
 
-	/* #endregion  /**======== Typography =========== */
-	html {
-		scroll-behavior: smooth;
-		scroll-padding-top: 82px;
-	}
+  /* #endregion  /**======== Typography =========== */
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 82px;
+  }
 
-	.page {
-		@apply min-h-screen flex flex-col bg-bg transition-colors duration-300;
-	}
+  .page {
+    @apply min-h-screen flex flex-col bg-bg transition-colors duration-300;
+  }
 
-	.layout {
-		/* 1100px */
-		max-width: 68.75rem;
-		@apply mx-auto w-11/12;
-	}
+  .layout {
+    /* 1100px */
+    max-width: 68.75rem;
+    @apply mx-auto w-11/12;
+  }
 
-	.code {
-		@apply bg-primary/10 rounded-md px-2 py-0.5;
-	}
+  .code {
+    @apply bg-primary/10 rounded-md px-2 py-0.5;
+  }
 
-	.card-wrapper {
-		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-	}
+  .repo-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  }
 
-	.card-wrapper-mobile {
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-	}
+  .repo-wrapper-tablet {
+    grid-template-columns: repeat(auto-fit, minmax(275px, 1fr));
+  }
 
-	.bg-dark a.custom-link {
-		@apply border-gray-200 hover:border-gray-200/0;
-	}
+  .card-wrapper {
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  }
 
-	/* Class to adjust with sticky footer */
-	.min-h-main {
-		@apply min-h-[calc(100vh-56px)];
-	}
+  .card-wrapper-mobile {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+
+  .bg-dark a.custom-link {
+    @apply border-gray-200 hover:border-gray-200/0;
+  }
+
+  /* Class to adjust with sticky footer */
+  .min-h-main {
+    @apply min-h-[calc(100vh-56px)];
+  }
 }
 
 @layer components {
-	.prose > p,
-	.prose > h1,
-	.prose > h2,
-	.prose > h3,
-	.prose > h4,
-	.prose > p > code,
-	.prose > ul > li {
-		@apply text-primary;
-	}
+  .prose > p,
+  .prose > h1,
+  .prose > h2,
+  .prose > h3,
+  .prose > h4,
+  .prose > p > code,
+  .prose > ul > li {
+    @apply text-primary;
+  }
 
-	.prose > pre {
-		@apply p-1 bg-bg-secondary;
-	}
+  .prose > pre {
+    @apply p-1 bg-bg-secondary;
+  }
 
-	[data-theme="light"] .prose > pre {
-		@apply p-1 bg-[#808080];
-	}
+  [data-theme="light"] .prose > pre {
+    @apply p-1 bg-[#808080];
+  }
 
-	.prose > pre > code {
-		@apply rounded-[4px] bg-bg;
-	}
+  .prose > pre > code {
+    @apply rounded-[4px] bg-bg;
+  }
 
-	.prose > ul > li > code {
-		@apply text-primary bg-primary/10 rounded-md px-1 py-0.5 mr-1;
-	}
+  .prose > ul > li > code {
+    @apply text-primary bg-primary/10 rounded-md px-1 py-0.5 mr-1;
+  }
 
-	.prose > ul > li > code::before,
-	.prose > ul > li > code::after,
-	code::before,
-	code::after {
-		@apply hidden;
-	}
+  .prose > ul > li > code::before,
+  .prose > ul > li > code::after,
+  code::before,
+  code::after {
+    @apply hidden;
+  }
 
-	[data-theme="light"] .prose > pre > code {
-		@apply bg-bg-secondary;
-	}
+  [data-theme="light"] .prose > pre > code {
+    @apply bg-bg-secondary;
+  }
 
-	.prose > h1,
-	.prose > h2,
-	.prose > h3,
-	.prose > h4 {
-		@apply mt-12 mb-6;
-	}
+  .prose > h1,
+  .prose > h2,
+  .prose > h3,
+  .prose > h4 {
+    @apply mt-12 mb-6;
+  }
 
-	.prose > blockquote {
-		@apply bg-bg-secondary py-[1px] rounded-sm text-primary border-l-red-500;
-	}
+  .prose > blockquote {
+    @apply bg-bg-secondary py-[1px] rounded-sm text-primary border-l-red-500;
+  }
 
-	.prose > blockquote > p {
-		@apply my-4;
-	}
+  .prose > blockquote > p {
+    @apply my-4;
+  }
 
-	[data-theme="light"] .prose > blockquote {
-		@apply bg-bg-secondary text-bg border-l-blue-500;
-	}
+  [data-theme="light"] .prose > blockquote {
+    @apply bg-bg-secondary text-bg border-l-blue-500;
+  }
 
-	.prose > h1 > a,
-	.prose > h2 > a,
-	.prose > h3 > a,
-	.prose > h4 > a {
-		@apply hover:underline no-underline underline-offset-2 text-primary;
-	}
+  .prose > h1 > a,
+  .prose > h2 > a,
+  .prose > h3 > a,
+  .prose > h4 > a {
+    @apply hover:underline no-underline underline-offset-2 text-primary;
+  }
 
-	.prose > ul > li::marker {
-		@apply text-primary/80;
-	}
+  .prose > ul > li::marker {
+    @apply text-primary/80;
+  }
 
-	.prose > blockquote > p::before,
-	.prose > blockquote > p::after {
-		display: none;
-	}
+  .prose > blockquote > p::before,
+  .prose > blockquote > p::after {
+    display: none;
+  }
 
-	.prose > p > a,
-	.prose > ul > li > a,
-	.link {
-		@apply text-indigo-400 hover:text-indigo-500 transition-colors duration-200;
-	}
+  .prose > p > a,
+  .prose > ul > li > a,
+  .link {
+    @apply text-indigo-400 hover:text-indigo-500 transition-colors duration-200;
+  }
 
-	[data-theme="light"] .prose > p > a,
-	.prose > ul > li > a,
-	.link {
-		@apply text-indigo-500 hover:text-indigo-600;
-	}
+  [data-theme="light"] .prose > p > a,
+  .prose > ul > li > a,
+  .link {
+    @apply text-indigo-500 hover:text-indigo-600;
+  }
 
-	.prose > pre > code {
-		@apply overflow-x-scroll lg:scrollbar;
-	}
+  .prose > pre > code {
+    @apply overflow-x-scroll lg:scrollbar;
+  }
 }
 
 @layer utilities {
-	/* Customize website's scrollbar like Mac OS
+  /* Customize website's scrollbar like Mac OS
 Not supports in Firefox and IE */
 
-	/* total width */
-	.scrollbar::-webkit-scrollbar {
-		/*  Uncomment the following code to hide scrollbar, while still being able to scroll */
-		/* display: none; */
-		width: 16px;
-		height: 12px;
-		@apply bg-transparent;
-	}
+  /* total width */
+  .scrollbar::-webkit-scrollbar {
+    /*  Uncomment the following code to hide scrollbar, while still being able to scroll */
+    /* display: none; */
+    width: 16px;
+    height: 12px;
+    @apply bg-transparent;
+  }
 
-	/* background of the scrollbar except button or resizer */
-	.scrollbar::-webkit-scrollbar-track {
-		@apply bg-transparent;
-	}
-	.scrollbar::-webkit-scrollbar-track:hover {
-		@apply bg-transparent;
-	}
+  /* background of the scrollbar except button or resizer */
+  .scrollbar::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+  .scrollbar::-webkit-scrollbar-track:hover {
+    @apply bg-transparent;
+  }
 
-	/* scrollbar itself */
-	.scrollbar::-webkit-scrollbar-thumb {
-		border-radius: 16px;
-		border: 5px solid rgb(var(--color-bg));
-		background-color: #808080;
-	}
+  /* scrollbar itself */
+  .scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 16px;
+    border: 5px solid rgb(var(--color-bg));
+    background-color: #808080;
+  }
 
-	[data-theme="light"] .scrollbar::-webkit-scrollbar-thumb {
-		border-radius: 16px;
-		border: 5px solid rgb(var(--color-bg-secondary));
-		background-color: #808080;
-	}
+  [data-theme="light"] .scrollbar::-webkit-scrollbar-thumb {
+    border-radius: 16px;
+    border: 5px solid rgb(var(--color-bg-secondary));
+    background-color: #808080;
+  }
 
-	.scrollbar::-webkit-scrollbar-thumb:hover {
-		background-color: #808080;
-	}
+  .scrollbar::-webkit-scrollbar-thumb:hover {
+    background-color: #808080;
+  }
 
-	/* set button(top and bottom of the scrollbar) */
-	.scrollbar::-webkit-scrollbar-button {
-		display: none;
-	}
+  /* set button(top and bottom of the scrollbar) */
+  .scrollbar::-webkit-scrollbar-button {
+    display: none;
+  }
 
-	.scrollbar-hide {
-		-ms-overflow-style: none; /* Internet Explorer 10+ */
-		scrollbar-width: none; /* Firefox */
-	}
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* Internet Explorer 10+ */
+    scrollbar-width: none; /* Firefox */
+  }
 
-	.scrollbar-hide::-webkit-scrollbar {
-		display: none; /* Safari and Chrome */
-	}
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none; /* Safari and Chrome */
+  }
 }
 
 /* #region  /**=========== Fade In =========== */
 [data-fade] {
-	@apply -translate-x-10 opacity-0 transition duration-[400ms] ease-out motion-reduce:translate-x-0 motion-reduce:opacity-100;
+  @apply -translate-x-10 opacity-0 transition duration-[400ms] ease-out motion-reduce:translate-x-0 motion-reduce:opacity-100;
 }
 .fade-in-start [data-fade] {
-	@apply translate-x-0 opacity-100;
+  @apply translate-x-0 opacity-100;
 }
 .fade-in-start [data-fade="1"] {
-	transition-delay: 100ms;
+  transition-delay: 100ms;
 }
 .fade-in-start [data-fade="2"] {
-	transition-delay: 200ms;
+  transition-delay: 200ms;
 }
 .fade-in-start [data-fade="3"] {
-	transition-delay: 300ms;
+  transition-delay: 300ms;
 }
 .fade-in-start [data-fade="4"] {
-	transition-delay: 400ms;
+  transition-delay: 400ms;
 }
 .fade-in-start [data-fade="5"] {
-	transition-delay: 500ms;
+  transition-delay: 500ms;
 }
 .fade-in-start [data-fade="6"] {
-	transition-delay: 600ms;
+  transition-delay: 600ms;
 }
 .fade-in-start [data-fade="7"] {
-	transition-delay: 700ms;
+  transition-delay: 700ms;
 }
 .fade-in-start [data-fade="8"] {
-	transition-delay: 800ms;
+  transition-delay: 800ms;
 }
 /* #endregion  /**======== Fade In =========== */
