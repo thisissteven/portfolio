@@ -1,0 +1,71 @@
+---
+title: How to make Netflix Skeleton
+tags:
+  - framer-motion
+  - react
+date: 2023-03-27
+writer: Steven
+excerpt: Stagger children animations using Framer Motion
+---
+
+## Result
+
+<CloudinaryImage publicId="uploads/stagger_vofr3g" width={2000} height={345} alt="stagger children" />
+
+## Code
+
+```jsx
+import { motion } from "framer-motion";
+
+const initialItems = [1, 2, 3, 4, 5, 6];
+
+const parentVariants = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.2,
+      staggerDirection: 1,
+    },
+  },
+};
+
+const variants = {
+  hidden: {
+    background: "#383838",
+  },
+  show: {
+    background: "#1a1a1a",
+    transition: {
+      yoyo: Infinity,
+      duration: 1.2,
+    },
+  },
+};
+
+export default function Stagger() {
+  return (
+    <div className="h-screen w-full bg-[#141414] p-8">
+      <h1 className="text-2xl font-semibold text-slate-100">Stagger Children</h1>
+
+      <div className="mt-4">
+        <motion.div
+          variants={parentVariants}
+          initial="hidden"
+          animate="show"
+          className="flex flex-wrap gap-4 rounded p-2"
+        >
+          {initialItems.map((item) => (
+            <motion.div
+              className="grid h-36 w-64 place-items-center rounded bg-[#1a1a1a] font-medium text-slate-100"
+              key={item}
+              variants={variants}
+            >
+              {item}
+            </motion.div>
+          ))}
+        </motion.div>
+      </div>
+    </div>
+  );
+}
+```
