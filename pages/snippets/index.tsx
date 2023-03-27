@@ -101,6 +101,6 @@ export default function Snippets({ posts }: { posts: PostMeta[] }) {
 
 export async function getStaticProps() {
   const data = getAllPosts("snippets");
-  const posts = data.slice(0, 9).map((post: Post) => post.meta);
+  const posts = data.map((post: Post) => post.meta);
   return { props: { posts } };
 }

@@ -1,0 +1,135 @@
+---
+title: Usage of date-fns
+tags:
+  - javascript
+date: 2023-03-27
+writer: Steven
+excerpt: Examples of frequently used date-fns functions
+---
+
+## Examples
+
+- `startOfToday()`
+
+Returns a `Date` object with today's date, starting at 00:00 AM.
+
+```javascript
+let today = startOfToday();
+
+console.log(today);
+// Mon Mar 27 2023 00:00:00 GMT+0700 (Western Indonesia Time)
+```
+
+- `format()`
+
+Accepts `Date` or `number` as first argument and `string` format as second argument. Returns a `Date` object or `number`.
+
+```javascript
+let currentMonth = format(today, "MMM-yyyy");
+
+console.log(currentMonth);
+// Mar-2023
+```
+
+- `parse()`
+
+Accepts `dateString` as first argument, `string` format as second argument, and `referenceDate` as third argument, which could be a `Date` object or a `number`. Returns a `Date` object or `number`.
+
+```javascript
+let firstDayCurrentMonth = parse(currentMonth, "MMM-yyyy", new Date());
+
+console.log(firstDayCurrentMonth);
+// Wed Mar 01 2023 00:00:00 GMT+0700 (Western Indonesia Time)
+```
+
+- `startOfMonth()` & `endOfMonth()`
+
+Accepts `Date` as first argument, returns a `Date` object.
+
+```javascript
+console.log(startOfMonth(firstDayCurrentMonth));
+// Wed Mar 01 2023 00:00:00 GMT+0700 (Western Indonesia Time)
+
+console.log(endOfMonth(firstDayCurrentMonth));
+// Fri Mar 31 2023 23:59:59 GMT+0700 (Western Indonesia Time)
+```
+
+- `add()`
+
+Increments date by a duration time provided in the second argument.
+
+Accepts `Date` as first argument and `Duration` object as second argument. Returns a `Date` object.
+
+```javascript
+console.log(add(firstDayCurrentMonth, { days: 1 }));
+// Thu Mar 02 2023 00:00:00 GMT+0700 (Western Indonesia Time)
+```
+
+- `eachDayOfInterval()`
+
+Returns an `Array` of `Date` object.
+
+Accepts `Interval` as first argument, which consists of `start` and `end` field that determines the final output.
+
+```javascript
+let days = eachDayOfInterval({
+  start: firstDayCurrentMonth,
+  end: add(firstDayCurrentMonth, { days: 1 }),
+});
+
+console.log(days);
+/* 
+Array [
+0: Date Wed Mar 01 2023 00:00:00 GMT+0700 (Western Indonesia Time)
+1: Date Thu Mar 02 2023 00:00:00 GMT+0700 (Western Indonesia Time)] 
+*/
+```
+
+- `parseISO()`
+
+Parses an ISO String and returns a `Date` object.
+
+Equivalent as calling `new Date()`
+
+```javascript
+console.log(parseISO("2023-03-28T13:00"));
+// Date Tue Mar 28 2023 13:00:00 GMT+0700 (Western Indonesia Time)
+
+console.log(new Date("2023-03-28T13:00"));
+// Date Tue Mar 28 2023 13:00:00 GMT+0700 (Western Indonesia Time)
+```
+
+- `isToday()`
+
+Returns `Day`, which is a union type of `0 | 1 | 2 | 3 | 4 | 5 | 6`, with `0` being `Monday`, `1` being `Tuesday`, etc.
+
+Accepts a `Date` object or `number` as first argument.
+
+```javascript
+console.log(isToday(today));
+// true
+
+let tomorrow = add(today, { days: 1 });
+
+console.log(isToday(tomorrow));
+// false
+```
+
+- `isEqual()`, `isSameMonth()`, `isSameDay()`
+
+Compares two arguments based on the name of the function itself, `dateLeft` and `dateRight`, both either a `Date` object or a `number`. Returns a `boolean`.
+
+```javascript
+let todayWithOneHourAdded = add(today, {
+  hours: 1,
+});
+
+console.log(isEqual(today, todayWithOneHourAdded));
+// false
+
+console.log(isSameMonth(today, firstDayCurrentMonth));
+// true
+
+console.log(isSameDay(today, todayWithOneHourAdded));
+// true
+```
