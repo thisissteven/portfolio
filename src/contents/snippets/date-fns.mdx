@@ -133,3 +133,15 @@ console.log(isSameMonth(today, firstDayCurrentMonth));
 console.log(isSameDay(today, todayWithOneHourAdded));
 // true
 ```
+
+- `startOfWeek()` and `endOfWeek()`
+
+Returns a `Date` object or `number`, either the start or end of week based on the function used. Accepts a `Date` object or `number` as first argument. Useful when working with calendars that need dates outside of the current month.
+
+```javascript
+console.log(startOfWeek(firstDayCurrentMonth));
+// Date Sun Feb 26 2023 00:00:00 GMT+0700 (Western Indonesia Time)
+
+console.log(endOfWeek(endOfMonth(firstDayCurrentMonth)));
+// Date Sat Apr 01 2023 23:59:59 GMT+0700 (Western Indonesia Time)
+```
