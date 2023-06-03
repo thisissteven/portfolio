@@ -16,10 +16,10 @@ export default function Projects({ posts }: { posts: PostMeta[] }) {
       <Seo title="Projects" description="Side projects I made throughout my learning process." />
       <div className={`${isLoaded ? "fade-in-start" : "opacity-0"}`}>
         <h1 className="mb-2" data-fade="1">
-          Projects 🏆
+          Projects 🎓
         </h1>
         <p className="mb-4" data-fade="2">
-          Side projects I made throughout my learning process.
+          Showcase of my experiences throughout my learning process.
         </p>
         <ul className="flex flex-col gap-4" data-fade="3">
           {projects?.map((post) => (

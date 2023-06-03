@@ -21,11 +21,16 @@ import {
   SiCss3,
   SiPrisma,
   SiFramer,
+  SiKotlin,
+  SiJetbrains,
+  SiAndroid,
 } from "react-icons/si";
 import SearchFilter from "@/components/SearchFilter";
 import SortListBox from "@/components/SortListBox";
 
 export const tags = {
+  compose: <SiAndroid />,
+  kotlin: <SiKotlin />,
   nextjs: <SiNextdotjs />,
   react: <SiReact />,
   tailwind: <SiTailwindcss />,

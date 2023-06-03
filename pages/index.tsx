@@ -76,7 +76,7 @@ const Home = ({ repos }: { repos: RepoProps[] }) => {
             <a
               target="_blank"
               rel="noopener noreferrer"
-              href="https://drive.google.com/file/d/1PgV2xvmtSUNJT9PmlFR3e3-FesBE9RQW/view?usp=sharing"
+              href="https://drive.google.com/file/d/1vt-geeyP3JLZTjaKDzuRKpvOcYkD74Pp/view?usp=sharing"
               className="flex items-center space-x-2 px-2 py-1 hover:bg-primary/10 transition-colors duration-300 rounded-md"
             >
               <span>Resume</span>
