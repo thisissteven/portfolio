@@ -37,11 +37,11 @@ export default function Footer() {
 	return (
 		<footer className="layout pb-8 flex flex-col gap-4">
 			<ul className="flex gap-4 items-center">
-				<li>
+{/* 				<li>
 					<a target="_blank" href="https://dev.to/steven2801" rel="noopener noreferrer">
 						<DevTO />
 					</a>
-				</li>
+				</li> */}
 				<li>
 					<a target="_blank" href="https://github.com/steven2801" rel="noopener noreferrer">
 						<FaGithub className="w-[24px] h-[24px] fill-primary hover:opacity-100 opacity-80 transition-opacity duration-200" />
